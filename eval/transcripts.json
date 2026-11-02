@@ -1,0 +1,890 @@
+[
+  {
+    "id": "en-01",
+    "language": "en",
+    "shopType": "kirana",
+    "transcript": "Hello, my shop is called Sharma General Store. We are a kirana store in Lajpat Nagar Central Market, New Delhi 110024. We open at 9 in the morning and close at 10 at night, Monday to Saturday. Sunday we are closed. My number is 98765 43210, same on WhatsApp. We sell Aashirvaad atta 5 kg for 280 rupees, toor dal 140 rupees per kg, Tata salt 28 rupees, and Parle-G for 10 rupees.",
+    "expected": {
+      "name": "Sharma General Store",
+      "phone": "9876543210",
+      "hours": {
+        "mon": "09:00-22:00",
+        "tue": "09:00-22:00",
+        "wed": "09:00-22:00",
+        "thu": "09:00-22:00",
+        "fri": "09:00-22:00",
+        "sat": "09:00-22:00",
+        "sun": "closed"
+      },
+      "products": [
+        {
+          "name": "Aashirvaad atta",
+          "priceInr": 280
+        },
+        {
+          "name": "toor dal",
+          "priceInr": 140
+        },
+        {
+          "name": "Tata salt",
+          "priceInr": 28
+        },
+        {
+          "name": "Parle-G",
+          "priceInr": 10
+        }
+      ]
+    }
+  },
+  {
+    "id": "en-02",
+    "language": "en",
+    "shopType": "medical",
+    "transcript": "This is City Care Medical Store near Gandhi Chowk, Nagpur. We are open every day from 8 AM to 11 PM. Call us on 9823012345. We keep Dolo 650 at 30 rupees a strip, Crocin at 25, ORS sachets at 21 rupees and Vicks Vaporub 50 gram for 120.",
+    "expected": {
+      "name": "City Care Medical Store",
+      "phone": "9823012345",
+      "hours": {
+        "mon": "08:00-23:00",
+        "tue": "08:00-23:00",
+        "wed": "08:00-23:00",
+        "thu": "08:00-23:00",
+        "fri": "08:00-23:00",
+        "sat": "08:00-23:00",
+        "sun": "08:00-23:00"
+      },
+      "products": [
+        {
+          "name": "Dolo 650",
+          "priceInr": 30
+        },
+        {
+          "name": "Crocin",
+          "priceInr": 25
+        },
+        {
+          "name": "ORS",
+          "priceInr": 21
+        },
+        {
+          "name": "Vicks Vaporub",
+          "priceInr": 120
+        }
+      ]
+    }
+  },
+  {
+    "id": "en-03",
+    "language": "en",
+    "shopType": "mobile_repair",
+    "transcript": "Hi, I run Gupta Mobile Repair in Sector 18 market, Noida. Screen replacement starts at 1500 rupees, battery change is 800, and tempered glass is 150. Timings are 11 to 8, Tuesday closed. Phone 9911223344.",
+    "expected": {
+      "name": "Gupta Mobile Repair",
+      "phone": "9911223344",
+      "hours": {
+        "mon": "11:00-20:00",
+        "tue": "closed",
+        "wed": "11:00-20:00",
+        "thu": "11:00-20:00",
+        "fri": "11:00-20:00",
+        "sat": "11:00-20:00",
+        "sun": "11:00-20:00"
+      },
+      "products": [
+        {
+          "name": "Screen replacement",
+          "priceInr": 1500
+        },
+        {
+          "name": "Battery change",
+          "priceInr": 800,
+          "aliases": ["battery"]
+        },
+        {
+          "name": "Tempered glass",
+          "priceInr": 150
+        }
+      ]
+    }
+  },
+  {
+    "id": "en-04",
+    "language": "en",
+    "shopType": "boutique",
+    "transcript": "Welcome to Riya's Boutique, we do designer kurtis and blouses. Cotton kurtis are 899, silk sarees start at 2500, and blouse stitching is 450. We're in Koramangala 5th Block, Bangalore. Open 10:30 AM to 8:30 PM all days except Monday. WhatsApp us at 8095512345.",
+    "expected": {
+      "name": "Riya's Boutique",
+      "phone": "8095512345",
+      "hours": {
+        "mon": "closed",
+        "tue": "10:30-20:30",
+        "wed": "10:30-20:30",
+        "thu": "10:30-20:30",
+        "fri": "10:30-20:30",
+        "sat": "10:30-20:30",
+        "sun": "10:30-20:30"
+      },
+      "products": [
+        {
+          "name": "Cotton kurti",
+          "priceInr": 899
+        },
+        {
+          "name": "Silk saree",
+          "priceInr": 2500
+        },
+        {
+          "name": "Blouse stitching",
+          "priceInr": 450
+        }
+      ]
+    }
+  },
+  {
+    "id": "en-05",
+    "language": "en",
+    "shopType": "sweet_shop",
+    "transcript": "Shree Krishna Sweets, Chandni Chowk, Delhi. Kaju katli is 1200 rupees a kilo, rasgulla 20 rupees per piece, samosa 15 rupees. Open from 7 in the morning to 10 at night daily.",
+    "expected": {
+      "name": "Shree Krishna Sweets",
+      "phone": null,
+      "hours": {
+        "mon": "07:00-22:00",
+        "tue": "07:00-22:00",
+        "wed": "07:00-22:00",
+        "thu": "07:00-22:00",
+        "fri": "07:00-22:00",
+        "sat": "07:00-22:00",
+        "sun": "07:00-22:00"
+      },
+      "products": [
+        {
+          "name": "Kaju katli",
+          "priceInr": 1200
+        },
+        {
+          "name": "Rasgulla",
+          "priceInr": 20
+        },
+        {
+          "name": "Samosa",
+          "priceInr": 15
+        }
+      ]
+    }
+  },
+  {
+    "id": "en-06",
+    "language": "en",
+    "shopType": "kirana",
+    "transcript": "My shop's name is Patel Provision Store. That's it for now, I'll add products later.",
+    "expected": {
+      "name": "Patel Provision Store",
+      "phone": null,
+      "hours": null,
+      "products": []
+    }
+  },
+  {
+    "id": "en-07",
+    "language": "en",
+    "shopType": "medical",
+    "transcript": "Apollo Pharmacy franchise at MG Road, Pune 411001, open 24 hours, all seven days. Contact 020 2612 3456.",
+    "expected": {
+      "name": "Apollo Pharmacy",
+      "phone": "02026123456",
+      "hours": {
+        "mon": "00:00-00:00",
+        "tue": "00:00-00:00",
+        "wed": "00:00-00:00",
+        "thu": "00:00-00:00",
+        "fri": "00:00-00:00",
+        "sat": "00:00-00:00",
+        "sun": "00:00-00:00"
+      },
+      "products": []
+    }
+  },
+  {
+    "id": "en-08",
+    "language": "en",
+    "shopType": "mobile_repair",
+    "transcript": "Star Mobiles and Accessories, shop number 4, Laxmi Road, Pune. We sell Redmi chargers for 499, earphones for 299 and phone covers starting at 199. Earphones are out of stock right now. Open 10 to 9, Sunday half day 10 to 2. Number is 7709876543.",
+    "expected": {
+      "name": "Star Mobiles and Accessories",
+      "phone": "7709876543",
+      "hours": {
+        "mon": "10:00-21:00",
+        "tue": "10:00-21:00",
+        "wed": "10:00-21:00",
+        "thu": "10:00-21:00",
+        "fri": "10:00-21:00",
+        "sat": "10:00-21:00",
+        "sun": "10:00-14:00"
+      },
+      "products": [
+        {
+          "name": "Redmi charger",
+          "priceInr": 499,
+          "aliases": ["charger"]
+        },
+        {
+          "name": "Earphones",
+          "priceInr": 299
+        },
+        {
+          "name": "Phone cover",
+          "priceInr": 199,
+          "aliases": ["cover"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "en-09",
+    "language": "en",
+    "shopType": "boutique",
+    "transcript": "Ananya Fashion Studio. We sell lehengas from 5000 rupees and dupattas for 600. Call 9001234567. We're open 11 AM to 9 PM every day.",
+    "expected": {
+      "name": "Ananya Fashion Studio",
+      "phone": "9001234567",
+      "hours": {
+        "mon": "11:00-21:00",
+        "tue": "11:00-21:00",
+        "wed": "11:00-21:00",
+        "thu": "11:00-21:00",
+        "fri": "11:00-21:00",
+        "sat": "11:00-21:00",
+        "sun": "11:00-21:00"
+      },
+      "products": [
+        {
+          "name": "Lehenga",
+          "priceInr": 5000
+        },
+        {
+          "name": "Dupatta",
+          "priceInr": 600
+        }
+      ]
+    }
+  },
+  {
+    "id": "en-10",
+    "language": "en",
+    "shopType": "sweet_shop",
+    "transcript": "Bikaner Sweet House in Jaipur, Johari Bazaar. Ghewar 600 rupees per kilo, motichoor ladoo 400 per kilo, and kachori 25 rupees each. We open at 8 AM and close at 10 PM, Monday to Sunday. Our number is 9414012345 and UPI is bikanersweets@paytm.",
+    "expected": {
+      "name": "Bikaner Sweet House",
+      "phone": "9414012345",
+      "hours": {
+        "mon": "08:00-22:00",
+        "tue": "08:00-22:00",
+        "wed": "08:00-22:00",
+        "thu": "08:00-22:00",
+        "fri": "08:00-22:00",
+        "sat": "08:00-22:00",
+        "sun": "08:00-22:00"
+      },
+      "products": [
+        {
+          "name": "Ghewar",
+          "priceInr": 600
+        },
+        {
+          "name": "Motichoor ladoo",
+          "priceInr": 400
+        },
+        {
+          "name": "Kachori",
+          "priceInr": 25
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-01",
+    "language": "hi",
+    "shopType": "kirana",
+    "transcript": "मेरी दुकान का नाम गुप्ता किराना स्टोर है। हम सुबह 8 बजे से रात 9 बजे तक खुले रहते हैं, रविवार को बंद। मेरा नंबर 9876501234 है। चीनी 45 रुपये किलो, चावल 60 रुपये किलो और सरसों का तेल 180 रुपये लीटर।",
+    "expected": {
+      "name": "गुप्ता किराना स्टोर",
+      "nameRomanized": "Gupta Kirana Store",
+      "phone": "9876501234",
+      "hours": {
+        "mon": "08:00-21:00",
+        "tue": "08:00-21:00",
+        "wed": "08:00-21:00",
+        "thu": "08:00-21:00",
+        "fri": "08:00-21:00",
+        "sat": "08:00-21:00",
+        "sun": "closed"
+      },
+      "products": [
+        {
+          "name": "चीनी",
+          "priceInr": 45,
+          "aliases": ["sugar", "cheeni", "chini"]
+        },
+        {
+          "name": "चावल",
+          "priceInr": 60,
+          "aliases": ["rice", "chawal"]
+        },
+        {
+          "name": "सरसों का तेल",
+          "priceInr": 180,
+          "aliases": ["mustard oil", "sarson ka tel", "sarso tel"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-02",
+    "language": "hi",
+    "shopType": "medical",
+    "transcript": "यह शिव मेडिकल स्टोर है, स्टेशन रोड, कानपुर। हम रोज़ सुबह 9 से रात 10 बजे तक खुले हैं। फ़ोन नंबर 9450123456। पैरासिटामोल की पत्ती 20 रुपये, बीपी की मशीन 1500 रुपये।",
+    "expected": {
+      "name": "शिव मेडिकल स्टोर",
+      "nameRomanized": "Shiv Medical Store",
+      "phone": "9450123456",
+      "hours": {
+        "mon": "09:00-22:00",
+        "tue": "09:00-22:00",
+        "wed": "09:00-22:00",
+        "thu": "09:00-22:00",
+        "fri": "09:00-22:00",
+        "sat": "09:00-22:00",
+        "sun": "09:00-22:00"
+      },
+      "products": [
+        {
+          "name": "पैरासिटामोल",
+          "priceInr": 20,
+          "aliases": ["paracetamol"]
+        },
+        {
+          "name": "बीपी मशीन",
+          "priceInr": 1500,
+          "aliases": ["bp machine", "बीपी की मशीन"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-03",
+    "language": "hi",
+    "shopType": "mobile_repair",
+    "transcript": "हमारी दुकान का नाम राजा मोबाइल सेंटर है। स्क्रीन गार्ड 100 रुपये, चार्जर 350 रुपये। दोपहर 12 बजे से रात 9 बजे तक, हर दिन। नंबर है 8726012345।",
+    "expected": {
+      "name": "राजा मोबाइल सेंटर",
+      "nameRomanized": "Raja Mobile Center",
+      "phone": "8726012345",
+      "hours": {
+        "mon": "12:00-21:00",
+        "tue": "12:00-21:00",
+        "wed": "12:00-21:00",
+        "thu": "12:00-21:00",
+        "fri": "12:00-21:00",
+        "sat": "12:00-21:00",
+        "sun": "12:00-21:00"
+      },
+      "products": [
+        {
+          "name": "स्क्रीन गार्ड",
+          "priceInr": 100,
+          "aliases": ["screen guard"]
+        },
+        {
+          "name": "चार्जर",
+          "priceInr": 350,
+          "aliases": ["charger"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-04",
+    "language": "hi",
+    "shopType": "boutique",
+    "transcript": "सीमा बुटीक, लहंगा 3000 रुपये से शुरू, सूट सिलाई 500 रुपये। मंगलवार छुट्टी, बाकी दिन सुबह 11 से शाम 7 बजे तक। नंबर 9935012345।",
+    "expected": {
+      "name": "सीमा बुटीक",
+      "nameRomanized": "Seema Boutique",
+      "phone": "9935012345",
+      "hours": {
+        "mon": "11:00-19:00",
+        "tue": "closed",
+        "wed": "11:00-19:00",
+        "thu": "11:00-19:00",
+        "fri": "11:00-19:00",
+        "sat": "11:00-19:00",
+        "sun": "11:00-19:00"
+      },
+      "products": [
+        {
+          "name": "लहंगा",
+          "priceInr": 3000,
+          "aliases": ["lehenga"]
+        },
+        {
+          "name": "सूट सिलाई",
+          "priceInr": 500,
+          "aliases": ["suit silai", "suit stitching"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-05",
+    "language": "hi",
+    "shopType": "sweet_shop",
+    "transcript": "अग्रवाल मिष्ठान भंडार। रसगुल्ला 15 रुपये पीस, जलेबी 200 रुपये किलो, समोसा 12 रुपये। सुबह 7 बजे से रात 10 बजे तक रोज़ खुला।",
+    "expected": {
+      "name": "अग्रवाल मिष्ठान भंडार",
+      "nameRomanized": "Agarwal Mishthan Bhandar",
+      "phone": null,
+      "hours": {
+        "mon": "07:00-22:00",
+        "tue": "07:00-22:00",
+        "wed": "07:00-22:00",
+        "thu": "07:00-22:00",
+        "fri": "07:00-22:00",
+        "sat": "07:00-22:00",
+        "sun": "07:00-22:00"
+      },
+      "products": [
+        {
+          "name": "रसगुल्ला",
+          "priceInr": 15,
+          "aliases": ["rasgulla"]
+        },
+        {
+          "name": "जलेबी",
+          "priceInr": 200,
+          "aliases": ["jalebi"]
+        },
+        {
+          "name": "समोसा",
+          "priceInr": 12,
+          "aliases": ["samosa"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-06",
+    "language": "hi",
+    "shopType": "kirana",
+    "transcript": "मेरी दुकान का नाम लक्ष्मी जनरल स्टोर है, नंबर नौ आठ सात छह पांच चार तीन दो एक शून्य।",
+    "expected": {
+      "name": "लक्ष्मी जनरल स्टोर",
+      "nameRomanized": "Laxmi General Store",
+      "phone": "9876543210",
+      "hours": null,
+      "products": []
+    }
+  },
+  {
+    "id": "hi-07",
+    "language": "hi",
+    "shopType": "medical",
+    "transcript": "जन औषधि केंद्र, सिविल लाइंस, प्रयागराज। सोमवार से शनिवार सुबह साढ़े 8 से शाम साढ़े 8 तक, रविवार बंद। नंबर 7007012345।",
+    "expected": {
+      "name": "जन औषधि केंद्र",
+      "nameRomanized": "Jan Aushadhi Kendra",
+      "phone": "7007012345",
+      "hours": {
+        "mon": "08:30-20:30",
+        "tue": "08:30-20:30",
+        "wed": "08:30-20:30",
+        "thu": "08:30-20:30",
+        "fri": "08:30-20:30",
+        "sat": "08:30-20:30",
+        "sun": "closed"
+      },
+      "products": []
+    }
+  },
+  {
+    "id": "hi-08",
+    "language": "hi",
+    "shopType": "mobile_repair",
+    "transcript": "श्याम मोबाइल्स, फ़ोन कवर डेढ़ सौ रुपये, ईयरफ़ोन ढाई सौ रुपये, पावर बैंक 900 रुपये। नंबर 9876012345।",
+    "expected": {
+      "name": "श्याम मोबाइल्स",
+      "nameRomanized": "Shyam Mobiles",
+      "phone": "9876012345",
+      "hours": null,
+      "products": [
+        {
+          "name": "फ़ोन कवर",
+          "priceInr": 150,
+          "aliases": ["phone cover", "फोन कवर", "cover"]
+        },
+        {
+          "name": "ईयरफ़ोन",
+          "priceInr": 250,
+          "aliases": ["earphone", "ईयरफोन"]
+        },
+        {
+          "name": "पावर बैंक",
+          "priceInr": 900,
+          "aliases": ["power bank"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-09",
+    "language": "hi",
+    "shopType": "boutique",
+    "transcript": "प्रिया लेडीज़ टेलर एंड बुटीक, ब्लाउज़ सिलाई 350 रुपये, कुर्ती सिलाई 300 रुपये। सुबह 10 से रात 8 बजे तक, रविवार को दोपहर 2 बजे तक। फ़ोन 9123456780।",
+    "expected": {
+      "name": "प्रिया लेडीज़ टेलर एंड बुटीक",
+      "nameRomanized": "Priya Ladies Tailor and Boutique",
+      "phone": "9123456780",
+      "hours": {
+        "mon": "10:00-20:00",
+        "tue": "10:00-20:00",
+        "wed": "10:00-20:00",
+        "thu": "10:00-20:00",
+        "fri": "10:00-20:00",
+        "sat": "10:00-20:00",
+        "sun": "10:00-14:00"
+      },
+      "products": [
+        {
+          "name": "ब्लाउज़ सिलाई",
+          "priceInr": 350,
+          "aliases": ["blouse silai", "blouse stitching", "ब्लाउज सिलाई"]
+        },
+        {
+          "name": "कुर्ती सिलाई",
+          "priceInr": 300,
+          "aliases": ["kurti silai", "kurti stitching"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hi-10",
+    "language": "hi",
+    "shopType": "sweet_shop",
+    "transcript": "हल्दीराम नहीं, हमारी दुकान है शर्मा स्वीट्स। काजू कतली 1100 रुपये किलो, गुलाब जामुन 300 रुपये किलो। 9810012345 पर व्हाट्सऐप करें।",
+    "expected": {
+      "name": "शर्मा स्वीट्स",
+      "nameRomanized": "Sharma Sweets",
+      "phone": "9810012345",
+      "hours": null,
+      "products": [
+        {
+          "name": "काजू कतली",
+          "priceInr": 1100,
+          "aliases": ["kaju katli"]
+        },
+        {
+          "name": "गुलाब जामुन",
+          "priceInr": 300,
+          "aliases": ["gulab jamun"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-01",
+    "language": "hinglish",
+    "shopType": "kirana",
+    "transcript": "Mera naam Sharma General Store hai, hum subah 9 se raat 10 baje tak khule hain, Sunday band. Number hai 98765 43210. Atta 5 kilo 280 rupaye, Maggi 14 rupaye, aur Parle-G 10 rupaye ka packet.",
+    "expected": {
+      "name": "Sharma General Store",
+      "phone": "9876543210",
+      "hours": {
+        "mon": "09:00-22:00",
+        "tue": "09:00-22:00",
+        "wed": "09:00-22:00",
+        "thu": "09:00-22:00",
+        "fri": "09:00-22:00",
+        "sat": "09:00-22:00",
+        "sun": "closed"
+      },
+      "products": [
+        {
+          "name": "Atta",
+          "priceInr": 280
+        },
+        {
+          "name": "Maggi",
+          "priceInr": 14
+        },
+        {
+          "name": "Parle-G",
+          "priceInr": 10
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-02",
+    "language": "hinglish",
+    "shopType": "medical",
+    "transcript": "Bhai hamari dukaan ka naam Jain Medicos hai, Sadar Bazaar, Agra mein. Roz subah 8 baje se raat 11 baje tak khula rehta hai. Phone 9837012345. Dolo 30 rupaye patta, Digene 25 rupaye.",
+    "expected": {
+      "name": "Jain Medicos",
+      "phone": "9837012345",
+      "hours": {
+        "mon": "08:00-23:00",
+        "tue": "08:00-23:00",
+        "wed": "08:00-23:00",
+        "thu": "08:00-23:00",
+        "fri": "08:00-23:00",
+        "sat": "08:00-23:00",
+        "sun": "08:00-23:00"
+      },
+      "products": [
+        {
+          "name": "Dolo",
+          "priceInr": 30
+        },
+        {
+          "name": "Digene",
+          "priceInr": 25
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-03",
+    "language": "hinglish",
+    "shopType": "mobile_repair",
+    "transcript": "Hello ji, Royal Mobile Point, Ameerpet Hyderabad. Screen change 1200 se start, battery 700 rupaye, charger 300. Timing 10 se 9, Friday chhutti. Number 9848012345, WhatsApp bhi yahi hai.",
+    "expected": {
+      "name": "Royal Mobile Point",
+      "phone": "9848012345",
+      "hours": {
+        "mon": "10:00-21:00",
+        "tue": "10:00-21:00",
+        "wed": "10:00-21:00",
+        "thu": "10:00-21:00",
+        "fri": "closed",
+        "sat": "10:00-21:00",
+        "sun": "10:00-21:00"
+      },
+      "products": [
+        {
+          "name": "Screen change",
+          "priceInr": 1200,
+          "aliases": ["screen replacement"]
+        },
+        {
+          "name": "Battery",
+          "priceInr": 700
+        },
+        {
+          "name": "Charger",
+          "priceInr": 300
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-04",
+    "language": "hinglish",
+    "shopType": "boutique",
+    "transcript": "Hamara boutique hai Kavya Creations. Kurti 650 rupaye, palazzo 450, dupatta dedh sau. Monday se Saturday 11 se 8, Sunday band. Contact 9967012345.",
+    "expected": {
+      "name": "Kavya Creations",
+      "phone": "9967012345",
+      "hours": {
+        "mon": "11:00-20:00",
+        "tue": "11:00-20:00",
+        "wed": "11:00-20:00",
+        "thu": "11:00-20:00",
+        "fri": "11:00-20:00",
+        "sat": "11:00-20:00",
+        "sun": "closed"
+      },
+      "products": [
+        {
+          "name": "Kurti",
+          "priceInr": 650
+        },
+        {
+          "name": "Palazzo",
+          "priceInr": 450
+        },
+        {
+          "name": "Dupatta",
+          "priceInr": 150
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-05",
+    "language": "hinglish",
+    "shopType": "sweet_shop",
+    "transcript": "Ganesh Sweets and Namkeen, Indore. Poha jalebi combo 40 rupaye, khoya barfi 480 rupaye kilo, sev 200 rupaye kilo. Subah 6 baje se raat 11 baje tak, all days. Number 9826012345.",
+    "expected": {
+      "name": "Ganesh Sweets and Namkeen",
+      "phone": "9826012345",
+      "hours": {
+        "mon": "06:00-23:00",
+        "tue": "06:00-23:00",
+        "wed": "06:00-23:00",
+        "thu": "06:00-23:00",
+        "fri": "06:00-23:00",
+        "sat": "06:00-23:00",
+        "sun": "06:00-23:00"
+      },
+      "products": [
+        {
+          "name": "Poha jalebi combo",
+          "priceInr": 40,
+          "aliases": ["poha jalebi"]
+        },
+        {
+          "name": "Khoya barfi",
+          "priceInr": 480
+        },
+        {
+          "name": "Sev",
+          "priceInr": 200
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-06",
+    "language": "hinglish",
+    "shopType": "kirana",
+    "transcript": "Mera kirana store hai, naam abhi socha nahi. Hum Malad West mein hain, Mumbai. Doodh 66 rupaye litre.",
+    "expected": {
+      "name": null,
+      "phone": null,
+      "hours": null,
+      "products": [
+        {
+          "name": "Doodh",
+          "priceInr": 66,
+          "aliases": ["milk"]
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-07",
+    "language": "hinglish",
+    "shopType": "medical",
+    "transcript": "Wellness Medical, Salt Lake Kolkata. 24 ghante khula, saato din. Number 9830012345.",
+    "expected": {
+      "name": "Wellness Medical",
+      "phone": "9830012345",
+      "hours": {
+        "mon": "00:00-00:00",
+        "tue": "00:00-00:00",
+        "wed": "00:00-00:00",
+        "thu": "00:00-00:00",
+        "fri": "00:00-00:00",
+        "sat": "00:00-00:00",
+        "sun": "00:00-00:00"
+      },
+      "products": []
+    }
+  },
+  {
+    "id": "hl-08",
+    "language": "hinglish",
+    "shopType": "mobile_repair",
+    "transcript": "Arre bhai, Balaji Telecom, recharge aur mobile accessories. Earphone 199, cover 149, OTG adapter 99. Earphone abhi khatam hai. Shaam 4 se raat 10 tak khulte hain, sirf weekdays, Saturday Sunday band.",
+    "expected": {
+      "name": "Balaji Telecom",
+      "phone": null,
+      "hours": {
+        "mon": "16:00-22:00",
+        "tue": "16:00-22:00",
+        "wed": "16:00-22:00",
+        "thu": "16:00-22:00",
+        "fri": "16:00-22:00",
+        "sat": "closed",
+        "sun": "closed"
+      },
+      "products": [
+        {
+          "name": "Earphone",
+          "priceInr": 199
+        },
+        {
+          "name": "Cover",
+          "priceInr": 149
+        },
+        {
+          "name": "OTG adapter",
+          "priceInr": 99
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-09",
+    "language": "hinglish",
+    "shopType": "boutique",
+    "transcript": "Naam hai Zoya Fashion, Lucknow Aminabad. Chikankari kurta 1500, chikankari saree 3500. Sunday ko bhi khula hai 10 se 2, baaki din 10 se 9. Phone 9415012345.",
+    "expected": {
+      "name": "Zoya Fashion",
+      "phone": "9415012345",
+      "hours": {
+        "mon": "10:00-21:00",
+        "tue": "10:00-21:00",
+        "wed": "10:00-21:00",
+        "thu": "10:00-21:00",
+        "fri": "10:00-21:00",
+        "sat": "10:00-21:00",
+        "sun": "10:00-14:00"
+      },
+      "products": [
+        {
+          "name": "Chikankari kurta",
+          "priceInr": 1500
+        },
+        {
+          "name": "Chikankari saree",
+          "priceInr": 3500
+        }
+      ]
+    }
+  },
+  {
+    "id": "hl-10",
+    "language": "hinglish",
+    "shopType": "sweet_shop",
+    "transcript": "Hum Annapurna Sweets hain, Varanasi Godowlia pe. Laung lata 20 rupaye piece, malaiyo 40 rupaye kulhad, peda saade teen sau rupaye kilo. Roz subah saat se raat das. UPI annapurnasweets@okaxis, phone 9450987654.",
+    "expected": {
+      "name": "Annapurna Sweets",
+      "phone": "9450987654",
+      "hours": {
+        "mon": "07:00-22:00",
+        "tue": "07:00-22:00",
+        "wed": "07:00-22:00",
+        "thu": "07:00-22:00",
+        "fri": "07:00-22:00",
+        "sat": "07:00-22:00",
+        "sun": "07:00-22:00"
+      },
+      "products": [
+        {
+          "name": "Laung lata",
+          "priceInr": 20
+        },
+        {
+          "name": "Malaiyo",
+          "priceInr": 40
+        },
+        {
+          "name": "Peda",
+          "priceInr": 350
+        }
+      ]
+    }
+  }
+]
