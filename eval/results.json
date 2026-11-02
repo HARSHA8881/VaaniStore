@@ -1,0 +1,1450 @@
+{
+  "model": "gemini-3.5-flash",
+  "ranAt": "2026-11-02T11:02:33.333Z",
+  "cases": 30,
+  "overall": {
+    "precision": 1,
+    "recall": 1,
+    "f1": 1,
+    "tp": 363,
+    "fp": 0,
+    "fn": 0,
+    "hallucinations": 0
+  },
+  "latency": {
+    "avgMs": 4757,
+    "p95Ms": 11105
+  },
+  "fields": [
+    {
+      "field": "name",
+      "accuracy (all)": "100.0%",
+      "accuracy (en)": "100.0%",
+      "accuracy (hi)": "100.0%",
+      "accuracy (hinglish)": "100.0%",
+      "F1": "100.0%",
+      "hallucinations": "0"
+    },
+    {
+      "field": "phone",
+      "accuracy (all)": "100.0%",
+      "accuracy (en)": "100.0%",
+      "accuracy (hi)": "100.0%",
+      "accuracy (hinglish)": "100.0%",
+      "F1": "100.0%",
+      "hallucinations": "0"
+    },
+    {
+      "field": "hours",
+      "accuracy (all)": "100.0%",
+      "accuracy (en)": "100.0%",
+      "accuracy (hi)": "100.0%",
+      "accuracy (hinglish)": "100.0%",
+      "F1": "100.0%",
+      "hallucinations": "0"
+    },
+    {
+      "field": "products",
+      "accuracy (all)": "100.0%",
+      "accuracy (en)": "100.0%",
+      "accuracy (hi)": "100.0%",
+      "accuracy (hinglish)": "100.0%",
+      "F1": "100.0%",
+      "hallucinations": "0"
+    },
+    {
+      "field": "prices",
+      "accuracy (all)": "100.0%",
+      "accuracy (en)": "100.0%",
+      "accuracy (hi)": "100.0%",
+      "accuracy (hinglish)": "100.0%",
+      "F1": "100.0%",
+      "hallucinations": "0"
+    }
+  ],
+  "failures": [],
+  "perCase": [
+    {
+      "id": "en-01",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 4402,
+      "attempts": 1
+    },
+    {
+      "id": "en-02",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 4,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 6545,
+      "attempts": 1
+    },
+    {
+      "id": "en-03",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 3625,
+      "attempts": 1
+    },
+    {
+      "id": "en-04",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 3311,
+      "attempts": 1
+    },
+    {
+      "id": "en-05",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 4563,
+      "attempts": 1
+    },
+    {
+      "id": "en-06",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 1754,
+      "attempts": 1
+    },
+    {
+      "id": "en-07",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 2168,
+      "attempts": 1
+    },
+    {
+      "id": "en-08",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 2915,
+      "attempts": 1
+    },
+    {
+      "id": "en-09",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 2755,
+      "attempts": 1
+    },
+    {
+      "id": "en-10",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "en",
+      "latencyMs": 4036,
+      "attempts": 1
+    },
+    {
+      "id": "hi-01",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 2802,
+      "attempts": 1
+    },
+    {
+      "id": "hi-02",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 3147,
+      "attempts": 1
+    },
+    {
+      "id": "hi-03",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 3345,
+      "attempts": 1
+    },
+    {
+      "id": "hi-04",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 2714,
+      "attempts": 1
+    },
+    {
+      "id": "hi-05",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 11105,
+      "attempts": 1
+    },
+    {
+      "id": "hi-06",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 1520,
+      "attempts": 1
+    },
+    {
+      "id": "hi-07",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 10813,
+      "attempts": 1
+    },
+    {
+      "id": "hi-08",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 9874,
+      "attempts": 1
+    },
+    {
+      "id": "hi-09",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 5262,
+      "attempts": 1
+    },
+    {
+      "id": "hi-10",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hi",
+      "latencyMs": 5631,
+      "attempts": 1
+    },
+    {
+      "id": "hl-01",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 7168,
+      "attempts": 1
+    },
+    {
+      "id": "hl-02",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 4688,
+      "attempts": 1
+    },
+    {
+      "id": "hl-03",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 11162,
+      "attempts": 1
+    },
+    {
+      "id": "hl-04",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 5233,
+      "attempts": 1
+    },
+    {
+      "id": "hl-05",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 2192,
+      "attempts": 1
+    },
+    {
+      "id": "hl-06",
+      "counts": {
+        "name": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 2004,
+      "attempts": 1
+    },
+    {
+      "id": "hl-07",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 10775,
+      "attempts": 1
+    },
+    {
+      "id": "hl-08",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 0,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 2331,
+      "attempts": 1
+    },
+    {
+      "id": "hl-09",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 2,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 2326,
+      "attempts": 1
+    },
+    {
+      "id": "hl-10",
+      "counts": {
+        "name": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "phone": {
+          "tp": 1,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "hours": {
+          "tp": 7,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "products": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        },
+        "prices": {
+          "tp": 3,
+          "fp": 0,
+          "fn": 0,
+          "hallucinations": 0
+        }
+      },
+      "correct": {
+        "name": true,
+        "phone": true,
+        "hours": true,
+        "products": true,
+        "prices": true
+      },
+      "notes": [],
+      "language": "hinglish",
+      "latencyMs": 2536,
+      "attempts": 1
+    }
+  ],
+  "fallbackModel": "gemini-3.5-flash-lite",
+  "note": "Cases 1-13 answered by gemini-3.5-flash; free-tier quota ran out at case 14, so 14-30 were answered by the fallback gemini-3.5-flash-lite."
+}

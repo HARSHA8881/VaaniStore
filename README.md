@@ -72,7 +72,7 @@ npm run dev                  # http://localhost:3000
 
 **Supabase:**
 
-1. SQL Editor → run `supabase/migrations/0001_shops.sql`, then `0002_hardening.sql`.
+1. SQL Editor → run the files in `supabase/migrations/` in order (`0001`, `0002`, `0003`).
 2. Authentication → URL Configuration: set **Site URL** to your app URL, and add `http://localhost:3000/auth/callback` and `https://<your-app>/auth/callback` to **Redirect URLs**.
 3. (Optional) Authentication → Providers → Google: add an OAuth client from Google Cloud Console.
 
@@ -96,16 +96,21 @@ npm run dev                  # http://localhost:3000
 
 Each expected profile is split into atomic facts (name, phone, each day's hours, each product, each price). The scorer counts true positives, false positives and misses per field, and reports **hallucinations** separately.
 
-| Field          | Accuracy (all)       | EN  | HI  | Hinglish | F1  | Hallucinations |
-| -------------- | -------------------- | --- | --- | -------- | --- | -------------- |
-| name           | _run `npm run eval`_ |     |     |          |     |                |
-| phone          |                      |     |     |          |     |                |
-| hours          |                      |     |     |          |     |                |
-| products       |                      |     |     |          |     |                |
-| prices         |                      |     |     |          |     |                |
-| **overall F1** |                      |     |     |          |     |                |
+Results (2 Nov 2026, `gemini-3.5-flash` with minimal thinking; the free-tier quota ran out at case 14, so cases 14–30 were answered by the fallback `gemini-3.5-flash-lite`):
 
-<!-- Fill this table from eval/results.json after running `npm run eval`. -->
+| Field    | Accuracy (all) | EN   | HI   | Hinglish | F1   | Hallucinations |
+| -------- | -------------- | ---- | ---- | -------- | ---- | -------------- |
+| name     | 100%           | 100% | 100% | 100%     | 100% | 0              |
+| phone    | 100%           | 100% | 100% | 100%     | 100% | 0              |
+| hours    | 100%           | 100% | 100% | 100%     | 100% | 0              |
+| products | 100%           | 100% | 100% | 100%     | 100% | 0              |
+| prices   | 100%           | 100% | 100% | 100%     | 100% | 0              |
+
+Overall field-level F1 **100%**, 0 hallucinations, average latency 4.8 s (p95 11.1 s, inflated by quota fallbacks).
+
+**Read this honestly:** the 30 transcripts are clean, synthetic text written alongside the prompt, and the scorer matches names loosely. Real speech-recognition output from a noisy shop will be messier; the next step is adding real recordings to this set.
+
+**What the eval caught:** with an all-optional response schema, the model sometimes stopped after name + category and silently skipped phone, hours and products (about 1 run in 3 on the same transcript). Sending a required-but-nullable schema fixed it (5/5 complete runs).
 
 Next step: replace some synthetic transcripts with real recordings from local shopkeepers.
 
@@ -114,20 +119,20 @@ Next step: replace some synthetic transcripts with real recordings from local sh
 1. Push to GitHub → import the repo in Vercel (framework preset: Next.js).
 2. Set these environment variables (Production and Preview):
 
-| Variable                        | Notes                                                                      |
-| ------------------------------- | -------------------------------------------------------------------------- |
-| `GEMINI_API_KEY`                | Server only                                                                |
-| `GROQ_API_KEY`                  | Server only                                                                |
-| `NEXT_PUBLIC_SUPABASE_URL`      | From Supabase → Project Settings → API                                     |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public; data is protected by RLS                                           |
-| `SUPABASE_SERVICE_ROLE_KEY`     | Server only. Reserved for admin scripts; the app itself doesn't use it     |
-| `NEXT_PUBLIC_SITE_URL`          | e.g. `https://vaanistore.vercel.app` (used in share links, QR, Open Graph) |
-| `GEMINI_MODEL`                  | Optional; defaults to `gemini-flash-latest`                                |
-| `UPSTASH_REDIS_REST_URL`        | Shared rate limits (free tier is enough). Strongly recommended             |
-| `UPSTASH_REDIS_REST_TOKEN`      | Pair of the above                                                          |
-| `AI_DAILY_LIMIT`                | Optional; max AI calls per day for the whole app (default 3000)            |
-| `ERROR_WEBHOOK_URL`             | Optional Slack/Discord webhook that receives server errors                 |
-| `NEXT_PUBLIC_CONTACT_EMAIL`     | Shown on the privacy page                                                  |
+| Variable                        | Notes                                                                       |
+| ------------------------------- | --------------------------------------------------------------------------- |
+| `GEMINI_API_KEY`                | Server only                                                                 |
+| `GROQ_API_KEY`                  | Server only                                                                 |
+| `NEXT_PUBLIC_SUPABASE_URL`      | From Supabase → Project Settings → API                                      |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Public; data is protected by RLS                                            |
+| `SUPABASE_SERVICE_ROLE_KEY`     | Server only. Reserved for admin scripts; the app itself doesn't use it      |
+| `NEXT_PUBLIC_SITE_URL`          | e.g. `https://vaanistore.vercel.app` (used in share links, QR, Open Graph)  |
+| `GEMINI_MODEL`                  | Optional; defaults to `gemini-3.5-flash` (fallback `gemini-3.5-flash-lite`) |
+| `UPSTASH_REDIS_REST_URL`        | Shared rate limits (free tier is enough). Strongly recommended              |
+| `UPSTASH_REDIS_REST_TOKEN`      | Pair of the above                                                           |
+| `AI_DAILY_LIMIT`                | Optional; max AI calls per day for the whole app (default 3000)             |
+| `ERROR_WEBHOOK_URL`             | Optional Slack/Discord webhook that receives server errors                  |
+| `NEXT_PUBLIC_CONTACT_EMAIL`     | Shown on the privacy page                                                   |
 
 3. Add the production `/auth/callback` URL to Supabase Redirect URLs.
 
@@ -149,7 +154,7 @@ Code-level (done in this repo):
 
 Before launch (needs your accounts):
 
-- [ ] Supabase: run both migrations; set Site URL + Redirect URLs; enable Google provider; set up a custom SMTP sender (Supabase's built-in email is rate-limited to a few emails/hour); enable Point-in-Time Recovery or daily backups
+- [ ] Supabase: run all migrations; set Site URL + Redirect URLs; enable Google provider; set up a custom SMTP sender (Supabase's built-in email is rate-limited to a few emails/hour); enable Point-in-Time Recovery or daily backups
 - [ ] Create an Upstash Redis database and set `UPSTASH_REDIS_REST_*`
 - [ ] Set a billing alert and quota cap on the Google AI Studio project; check Groq limits
 - [ ] Set all env vars in Vercel → `npm run check:env` passes with production values

@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { aiErrorResponse, geminiGenerator } from "@/lib/ai/llm";
 import { guardAiRequest } from "@/lib/apiGuard";
-import { extractShopProfile, LlmExtractSchema } from "@/lib/extract";
+import { extractShopProfile, LlmExtractResponseShape } from "@/lib/extract";
 import { errorResponse, HttpError, readJson } from "@/lib/http";
 
 /** Transcript → { profile (partial), missing[] }. */
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     const started = Date.now();
     const result = await extractShopProfile(
       body.data.transcript,
-      geminiGenerator(LlmExtractSchema),
+      geminiGenerator(LlmExtractResponseShape),
     );
     return Response.json({ ...result, latencyMs: Date.now() - started });
   } catch (e) {

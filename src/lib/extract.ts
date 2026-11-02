@@ -60,6 +60,65 @@ export const LlmExtractSchema = z.object({
 });
 export type LlmExtract = z.infer<typeof LlmExtractSchema>;
 
+/**
+ * The response schema we actually SEND to Gemini: the same fields, but every one
+ * is REQUIRED and may be null. With all-optional fields, the model sometimes
+ * stopped after name + category and silently skipped phone, hours and products
+ * (seen in ~1 of 3 live runs). Required-but-nullable makes it consider every
+ * field and write null for what the owner didn't say.
+ */
+export const LlmExtractResponseShape = z.object({
+  name: z.string().nullable(),
+  slugRomanized: z.string().nullable(),
+  tagline: z.string().nullable(),
+  category: z.string().nullable(),
+  about: z.string().nullable(),
+  phone: z.string().nullable(),
+  whatsapp: z.string().nullable(),
+  upiId: z.string().nullable(),
+  address: z
+    .object({
+      line: z.string().nullable(),
+      city: z.string().nullable(),
+      pincode: z.string().nullable(),
+      mapsQuery: z.string().nullable(),
+    })
+    .nullable(),
+  hours: z.array(
+    z.object({
+      day: DaySchema,
+      open: z.string().nullable(),
+      close: z.string().nullable(),
+      closed: z.boolean(),
+    }),
+  ),
+  products: z.array(
+    z.object({
+      name: z.string(),
+      priceInr: z.number().nullable(),
+      unit: z.string().nullable(),
+      inStock: z.boolean().nullable(),
+    }),
+  ),
+  language: LanguageSchema.nullable(),
+});
+
+/** Recursively drop nulls, so "required but null" from the model means "not said". */
+export function stripNulls(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(stripNulls);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value)
+        .filter(([, v]) => v !== null)
+        .map(([k, v]) => [k, stripNulls(v)]),
+    );
+  }
+  return value;
+}
+
+/** Validation for the model's answer: nulls removed, then the strict optional schema. */
+export const LlmExtractAnswerSchema = z.preprocess(stripNulls, LlmExtractSchema);
+
 /** Fields the owner should be asked about if empty (keys match i18n `f_<key>`). */
 export const IMPORTANT_FIELDS = [
   "name",
@@ -151,7 +210,7 @@ export async function extractShopProfile(
     generate,
     system: EXTRACT_SYSTEM_PROMPT,
     user: buildExtractUserPrompt(transcript),
-    schema: LlmExtractSchema,
+    schema: LlmExtractAnswerSchema,
   });
   return { ...normalizeExtraction(data), attempts };
 }

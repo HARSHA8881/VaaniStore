@@ -1,5 +1,5 @@
 import { ApiError } from "@google/genai";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   aiErrorResponse,
   AiBusyError,
@@ -7,7 +7,38 @@ import {
   AiTimeoutError,
   AiValidationError,
   toAiError,
+  withFallback,
 } from "./llm";
+
+describe("withFallback", () => {
+  const args = { system: "s", user: "u" };
+
+  it("uses the primary model when it answers", async () => {
+    const fallback = vi.fn();
+    const gen = withFallback(vi.fn().mockResolvedValue("primary"), fallback);
+    await expect(gen(args)).resolves.toBe("primary");
+    expect(fallback).not.toHaveBeenCalled();
+  });
+
+  it.each([new AiBusyError("503"), new AiTimeoutError("slow")])(
+    "switches to the fallback when the primary is %o",
+    async (error) => {
+      vi.spyOn(console, "warn").mockImplementation(() => {});
+      const gen = withFallback(
+        vi.fn().mockRejectedValue(error),
+        vi.fn().mockResolvedValue("fallback"),
+      );
+      await expect(gen(args)).resolves.toBe("fallback");
+    },
+  );
+
+  it("does not hide real errors (e.g. a bad API key)", async () => {
+    const fallback = vi.fn();
+    const gen = withFallback(vi.fn().mockRejectedValue(new Error("bad key")), fallback);
+    await expect(gen(args)).rejects.toThrow("bad key");
+    expect(fallback).not.toHaveBeenCalled();
+  });
+});
 
 describe("toAiError", () => {
   it("treats provider 429/503 as busy", () => {

@@ -9,8 +9,8 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { geminiGenerator } from "../src/lib/ai/llm";
-import { extractShopProfile, LlmExtractSchema } from "../src/lib/extract";
+import { DEFAULT_FALLBACK_MODEL, DEFAULT_MODEL, geminiGenerator } from "../src/lib/ai/llm";
+import { extractShopProfile, LlmExtractResponseShape } from "../src/lib/extract";
 import { f1, FIELDS, scoreCase, sumCounts, type CaseScore, type EvalCase } from "./score";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -30,7 +30,7 @@ async function main() {
   const all = JSON.parse(readFileSync(join(here, "transcripts.json"), "utf8")) as EvalCase[];
   const cases = all.slice(0, arg("limit", all.length));
   const delay = arg("delay", 1500);
-  const generate = geminiGenerator(LlmExtractSchema);
+  const generate = geminiGenerator(LlmExtractResponseShape);
 
   const scores: (CaseScore & { language: string; latencyMs: number; attempts: number })[] = [];
   const failures: { id: string; error: string }[] = [];
@@ -96,7 +96,8 @@ async function main() {
   }
 
   const out = {
-    model: process.env.GEMINI_MODEL || "gemini-flash-latest",
+    model: process.env.GEMINI_MODEL || DEFAULT_MODEL,
+    fallbackModel: process.env.GEMINI_FALLBACK_MODEL ?? DEFAULT_FALLBACK_MODEL,
     ranAt: new Date().toISOString(),
     cases: cases.length,
     overall: { precision, recall, f1: overallF1, ...overall },

@@ -3,6 +3,8 @@ import { AiValidationError, generateValidated, toGeminiSchema } from "./ai/llm";
 import {
   computeMissing,
   extractShopProfile,
+  LlmExtractAnswerSchema,
+  LlmExtractResponseShape,
   LlmExtractSchema,
   normalizeExtraction,
 } from "./extract";
@@ -127,5 +129,39 @@ describe("toGeminiSchema", () => {
     expect(json).not.toContain("$schema");
     expect(json).not.toContain("additionalProperties");
     expect(json).not.toContain("pattern");
+  });
+});
+
+describe("required-but-nullable model answers", () => {
+  it("treats null as 'not said' and validates the rest", () => {
+    const answer = {
+      name: "Gupta Mobiles",
+      slugRomanized: null,
+      tagline: null,
+      category: "Mobile repair",
+      about: null,
+      phone: null,
+      whatsapp: null,
+      upiId: null,
+      address: { line: "Sector 18", city: null, pincode: null, mapsQuery: null },
+      hours: [{ day: "tue", open: null, close: null, closed: true }],
+      products: [{ name: "Tempered glass", priceInr: 150, unit: null, inStock: null }],
+      language: "en",
+    };
+    const parsed = LlmExtractAnswerSchema.parse(answer);
+    expect(parsed).toEqual({
+      name: "Gupta Mobiles",
+      category: "Mobile repair",
+      address: { line: "Sector 18" },
+      hours: [{ day: "tue", closed: true }],
+      products: [{ name: "Tempered glass", priceInr: 150 }],
+      language: "en",
+    });
+    expect(LlmExtractResponseShape.safeParse(answer).success).toBe(true);
+  });
+
+  it("tells Gemini every field is required", () => {
+    const json = toGeminiSchema(LlmExtractResponseShape) as { required: string[] };
+    expect(json.required).toEqual(expect.arrayContaining(["phone", "hours", "products"]));
   });
 });

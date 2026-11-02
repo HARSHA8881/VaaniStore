@@ -60,6 +60,7 @@ language sql stable security definer set search_path = '' as $$
   );
 $$;
 revoke all on function public.is_slug_available(text) from public;
+revoke all on function public.is_slug_available(text) from anon;
 grant execute on function public.is_slug_available(text) to authenticated;
 
 -- ── Storage: product photos ─────────────────────────────────────────

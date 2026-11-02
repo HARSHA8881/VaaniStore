@@ -1,4 +1,4 @@
-import { ApiError, GoogleGenAI } from "@google/genai";
+import { ApiError, GoogleGenAI, type ThinkingLevel } from "@google/genai";
 import { z } from "zod";
 
 /**
@@ -54,37 +54,73 @@ export function toGeminiSchema(schema: z.ZodType): unknown {
   return strip(json);
 }
 
-/** Real Gemini call with JSON response mode. Model is configurable because names change often. */
+/** Defaults chosen by measurement (see README): fast, accurate, and a fixed version. */
+export const DEFAULT_MODEL = "gemini-3.5-flash";
+export const DEFAULT_FALLBACK_MODEL = "gemini-3.5-flash-lite";
+
+/**
+ * Real Gemini call with JSON response mode.
+ *  - Model names are configurable because Google renames/retires them often.
+ *  - "Thinking" is kept minimal: extraction doesn't need reasoning, and thinking
+ *    made calls 10x slower in testing.
+ *  - If the main model is busy (429/503) or slow, we retry once on a lighter
+ *    fallback model, so an owner doesn't see an error during a demand spike.
+ */
 export function geminiGenerator(responseSchema: z.ZodType): GenerateJson {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) throw new AiNotConfiguredError("GEMINI_API_KEY is not set");
   const ai = new GoogleGenAI({ apiKey });
-  const model = process.env.GEMINI_MODEL || "gemini-flash-latest";
+  const model = process.env.GEMINI_MODEL || DEFAULT_MODEL;
+  const fallback = process.env.GEMINI_FALLBACK_MODEL ?? DEFAULT_FALLBACK_MODEL;
+  const thinking = process.env.GEMINI_THINKING || "minimal";
   const jsonSchema = toGeminiSchema(responseSchema);
 
-  return async ({ system, user }) => {
+  const call =
+    (name: string, timeoutMs: number, withThinking: boolean) =>
+    async (args: { system: string; user: string }) => {
+      try {
+        const res = await ai.models.generateContent({
+          model: name,
+          contents: args.user,
+          config: {
+            systemInstruction: args.system,
+            responseMimeType: "application/json",
+            responseJsonSchema: jsonSchema,
+            // Low temperature: we want faithful extraction, not creativity.
+            temperature: 0.1,
+            ...(withThinking &&
+              thinking !== "off" && {
+                thinkingConfig: { thinkingLevel: thinking.toUpperCase() as ThinkingLevel },
+              }),
+            abortSignal: AbortSignal.timeout(timeoutMs),
+          },
+        });
+        return res.text ?? "";
+      } catch (e) {
+        throw toAiError(e);
+      }
+    };
+
+  const primary = call(model, 15_000, true);
+  return fallback ? withFallback(primary, call(fallback, 15_000, false)) : primary;
+}
+
+/** Try `primary`; if the provider is busy or times out, try `fallback` once. */
+export function withFallback(primary: GenerateJson, fallback: GenerateJson): GenerateJson {
+  return async (args) => {
     try {
-      return await callGemini(system, user);
+      return await primary(args);
     } catch (e) {
-      throw toAiError(e);
+      if (e instanceof AiBusyError || e instanceof AiTimeoutError) {
+        console.warn(
+          "primary AI model unavailable, using fallback:",
+          (e as Error).message.slice(0, 120),
+        );
+        return fallback(args);
+      }
+      throw e;
     }
   };
-
-  async function callGemini(system: string, user: string) {
-    const res = await ai.models.generateContent({
-      model,
-      contents: user,
-      config: {
-        systemInstruction: system,
-        responseMimeType: "application/json",
-        responseJsonSchema: jsonSchema,
-        // Low temperature: we want faithful extraction, not creativity.
-        temperature: 0.1,
-        abortSignal: AbortSignal.timeout(25_000),
-      },
-    });
-    return res.text ?? "";
-  }
 }
 
 /** Translate SDK/network errors into our error types so routes can answer clearly. */
