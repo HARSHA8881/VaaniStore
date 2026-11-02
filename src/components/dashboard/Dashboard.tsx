@@ -33,6 +33,7 @@ import { PhoneFrame } from "../ui/PhoneFrame";
 import { btn, card } from "../ui/styles";
 import { UiLangToggle, useUi } from "../UiLang";
 import { VoiceRecorder } from "../VoiceRecorder";
+import { InsightsCard } from "./InsightsCard";
 import { MissingPrompts } from "./MissingPrompts";
 import { PublishBar } from "./PublishBar";
 import { ThemePicker } from "./ThemePicker";
@@ -217,7 +218,7 @@ export function Dashboard() {
       {!draft ? (
         <main className="bg-grain flex-1">
           <div className="mx-auto max-w-xl px-4 pt-10 pb-16 sm:pt-14">
-            <div className="animate-rise text-center">
+            <div className="text-center">
               <h1 className="font-display text-[2.4rem] leading-[1.05] font-semibold tracking-tight sm:text-5xl">
                 {t("dashboardTitle")}
               </h1>
@@ -237,7 +238,7 @@ export function Dashboard() {
                       key={ex}
                       type="button"
                       onClick={() => setTranscript((v) => (v ? `${v} ${ex}` : ex))}
-                      className="bg-paper-2 text-ink-soft hover:bg-kesar-50 hover:text-kesar-700 rounded-full px-3 py-1.5 text-left text-sm transition"
+                      className="bg-paper-2 text-ink-soft hover:bg-brand-50 hover:text-brand-700 rounded-full px-3 py-1.5 text-left text-sm transition"
                     >
                       “{ex}”
                     </button>
@@ -309,6 +310,7 @@ export function Dashboard() {
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_400px]">
             <div className={`space-y-4 ${tab === "edit" ? "" : "hidden lg:block"}`}>
               {shopUrl && <SharePanel url={shopUrl} shopName={draft.name} />}
+              {saved?.published && <InsightsCard refreshKey={saved.slug} />}
               {error && (
                 <p role="alert" className="bg-danger-50 text-danger rounded-2xl px-4 py-3 text-sm">
                   {error}

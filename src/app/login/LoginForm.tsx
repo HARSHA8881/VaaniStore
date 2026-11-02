@@ -53,7 +53,7 @@ export function LoginForm() {
       </header>
 
       <main className="mx-auto flex w-full max-w-md flex-1 flex-col justify-center px-5 pb-20">
-        <div className={`${card} animate-rise p-7`}>
+        <div className={`${card} p-7`}>
           <h1 className="font-display text-3xl font-semibold tracking-tight">{t("loginTitle")}</h1>
 
           {!supabase ? (

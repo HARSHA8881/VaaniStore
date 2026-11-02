@@ -4,9 +4,9 @@ import { ShopProfileSchema } from "./schema";
 
 describe("mergeExtraction", () => {
   it("keeps draft fields the AI didn't mention", () => {
-    const draft = { ...emptyDraft(), phone: "9876543210", theme: "bright" as const };
+    const draft = { ...emptyDraft(), phone: "9876543210", theme: "dark" as const };
     const merged = mergeExtraction(draft, { name: "Gupta Mobiles", slug: "gupta-mobiles" });
-    expect(merged).toMatchObject({ name: "Gupta Mobiles", phone: "9876543210", theme: "bright" });
+    expect(merged).toMatchObject({ name: "Gupta Mobiles", phone: "9876543210", theme: "dark" });
   });
 });
 

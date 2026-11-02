@@ -10,7 +10,7 @@ import { IMAGES_BUCKET } from "@/lib/supabase/config";
 import { useUi } from "../UiLang";
 
 const small =
-  "min-h-10 rounded-xl border border-line-strong bg-surface px-3 text-sm focus:border-kesar-500 focus:ring-4 focus:ring-kesar-100 focus:outline-none";
+  "min-h-10 rounded-xl border border-line-strong bg-surface px-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-100 focus:outline-none";
 
 /** Unique storage path per upload, so a new photo never shows a cached old one. */
 function photoPath(userId: string, productId: string) {
@@ -63,7 +63,7 @@ export function ProductsEditor({
         <div key={p.id} className="bg-surface ring-line flex gap-3 rounded-2xl p-3 ring-1">
           {/* Photo / upload tile */}
           <label
-            className={`bg-paper-2 text-ink-faint relative flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center overflow-hidden rounded-xl ${userId ? "hover:text-kesar-600 cursor-pointer" : ""}`}
+            className={`bg-paper-2 text-ink-faint relative flex h-[4.5rem] w-[4.5rem] shrink-0 items-center justify-center overflow-hidden rounded-xl ${userId ? "hover:text-brand-600 cursor-pointer" : ""}`}
             title={userId ? t("photo") : undefined}
           >
             {p.imageUrl ? (
@@ -162,7 +162,7 @@ export function ProductsEditor({
       <button
         type="button"
         onClick={() => onChange([...products, { id: newProductId(), name: "", inStock: true }])}
-        className="border-line-strong text-ink-soft hover:border-kesar-400 hover:bg-kesar-50 hover:text-kesar-700 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed font-semibold transition"
+        className="border-line-strong text-ink-soft hover:border-brand-400 hover:bg-brand-50 hover:text-brand-700 flex min-h-12 w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed font-semibold transition"
       >
         <Plus className="h-4 w-4" aria-hidden />
         {t("addProduct")}

@@ -14,10 +14,13 @@ India has over a crore small shops, and most have no web presence. Website build
 - 🎤 **Voice input**: Web Speech API (free, live transcript) with a Groq Whisper fallback for browsers without it. Max 2 minutes / 10 MB.
 - ✨ **AI extraction**: Gemini in JSON mode turns speech into a structured `ShopProfile`, validated with Zod, with one self-correcting retry. It never invents facts; missing fields are listed and asked for.
 - 🗣️ **Voice edits**: "add Parle-G 10 rupees", "Maggi khatam ho gaya" → typed patch operations → before/after diff → Confirm or Discard → 10-step undo.
-- 🏪 **Storefront**: three themes (classic / bright / minimal), open-now badge (computed in IST), ₹ prices, per-product WhatsApp order links, Google Maps, call button, UPI ID copy.
+- 🏪 **Storefront**: light and dark themes, open-now badge (computed in IST), ₹ prices, per-product WhatsApp order links, Google Maps, call button, UPI ID copy.
 - 🔐 **Auth and publishing**: Supabase magic link / Google login, Postgres with Row Level Security, product photos compressed to under 300 KB before upload, slug collision handling.
 - 🔎 **SEO**: server-rendered and cached `/s/<slug>` with title, description, Open Graph and `LocalBusiness` JSON-LD.
 - 📲 **PWA**: installable, offline shell, Hindi/English UI toggle, shareable link and printable QR code.
+- 🛒 **Cart + one-tap order**: customers add items with quantities and send one WhatsApp message listing every line and the total, then optionally pay that amount through any UPI app (standard `upi://pay` link; they confirm with their own PIN).
+- 📷 **Scan a price list**: the owner photographs a handwritten or printed rate list; Gemini vision reads items and prices (skipping dates, phone numbers and totals, never guessing unreadable prices); the owner ticks what to keep and existing products get their prices updated.
+- 📈 **Owner insights**: anonymous visits, WhatsApp/call/directions taps, orders and most-ordered products for the last 7 days. Recorded only through a database function that checks the shop is published and caps each shop at 120 events/minute; no names, numbers, IPs or cookies.
 - 📊 **Evaluation**: 30 labelled transcripts with per-field accuracy, field-level F1, hallucination count and latency.
 
 ## Architecture
@@ -72,7 +75,7 @@ npm run dev                  # http://localhost:3000
 
 **Supabase:**
 
-1. SQL Editor → run the files in `supabase/migrations/` in order (`0001`, `0002`, `0003`).
+1. SQL Editor → run the files in `supabase/migrations/` in order (`0001` → `0004`).
 2. Authentication → URL Configuration: set **Site URL** to your app URL, and add `http://localhost:3000/auth/callback` and `https://<your-app>/auth/callback` to **Redirect URLs**.
 3. (Optional) Authentication → Providers → Google: add an OAuth client from Google Cloud Console.
 

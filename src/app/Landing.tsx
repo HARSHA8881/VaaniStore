@@ -164,18 +164,14 @@ export function Landing() {
       <main className="flex-1">
         {/* ── Hero ── */}
         <section className="bg-grain relative overflow-x-clip">
-          <div
-            className="pointer-events-none absolute -top-40 right-[-10%] h-[36rem] w-[36rem] rounded-full bg-[radial-gradient(closest-side,rgb(244_166_42/0.28),transparent)]"
-            aria-hidden
-          />
           <div className="relative mx-auto grid max-w-6xl items-center gap-14 px-5 pt-12 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:pt-20 lg:pb-28">
-            <div className="animate-rise">
-              <span className="border-kesar-200 bg-kesar-50 text-kesar-700 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium">
+            <div className="">
+              <span className="border-brand-200 bg-brand-50 text-brand-700 inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm font-medium">
                 <AudioLines className="h-4 w-4" aria-hidden />
                 {c.pill}
               </span>
-              <h1 className="font-display text-ink mt-6 text-[3.1rem] leading-[0.98] font-semibold tracking-[-0.03em] sm:text-[4.4rem]">
-                {c.h1a} <span className="text-kesar-500 font-normal italic">{c.h1b}</span>
+              <h1 className="text-ink mt-6 text-[3rem] leading-[1] font-extrabold tracking-[-0.035em] sm:text-[4.2rem]">
+                {c.h1a} <span className="text-brand-500">{c.h1b}</span>
               </h1>
               <p className="text-ink-soft mt-6 max-w-xl text-lg leading-relaxed">{c.sub}</p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -200,6 +196,11 @@ export function Landing() {
 
             {/* Phone showcase: the real storefront component with sample data. */}
             <div className="relative mx-auto mt-12 w-full max-w-[22rem] lg:mt-0" aria-hidden inert>
+              {/* Solid saffron disc behind the phone: colour without gradients. */}
+              <div
+                className="bg-brand-100 absolute top-[12%] left-1/2 aspect-square w-[118%] -translate-x-1/2 rounded-full"
+                aria-hidden
+              />
               <PhoneFrame className="h-[38rem] rotate-[1.5deg]">
                 <StorefrontView profile={sampleShop} demo showDemoBanner={false} />
               </PhoneFrame>
@@ -209,7 +210,7 @@ export function Landing() {
                   {[0.6, 1, 0.75, 0.9, 0.5, 0.8, 0.65].map((h, i) => (
                     <span
                       key={i}
-                      className="animate-bar bg-kesar-400 w-[3px] origin-bottom rounded-full"
+                      className="animate-bar bg-brand-400 w-[3px] origin-bottom rounded-full"
                       style={{ height: `${h * 100}%`, animationDelay: `${i * 0.12}s` }}
                     />
                   ))}
@@ -231,7 +232,7 @@ export function Landing() {
         <section className="border-line bg-surface border-t">
           <div className="mx-auto max-w-6xl px-5 py-20 lg:py-24">
             <p className={eyebrow}>{c.howEyebrow}</p>
-            <h2 className="font-display mt-3 max-w-2xl text-4xl leading-tight font-semibold tracking-tight">
+            <h2 className="mt-3 max-w-2xl text-4xl leading-tight font-extrabold tracking-tight">
               {c.howTitle}
             </h2>
             <ol className="mt-12 grid gap-5 md:grid-cols-3">
@@ -242,10 +243,10 @@ export function Landing() {
                     key={step.title}
                     className="group border-line bg-paper hover:shadow-soft relative rounded-3xl border p-7 transition hover:-translate-y-0.5"
                   >
-                    <span className="font-display text-kesar-500 group-hover:text-kesar-600 text-6xl leading-none font-light transition">
-                      0{i + 1}
+                    <span className="bg-brand-50 text-brand-600 flex h-12 w-12 items-center justify-center rounded-xl text-lg font-extrabold">
+                      {i + 1}
                     </span>
-                    <span className="bg-surface text-kesar-600 ring-line absolute top-7 right-7 flex h-11 w-11 items-center justify-center rounded-2xl ring-1">
+                    <span className="bg-surface text-brand-600 ring-line absolute top-7 right-7 flex h-11 w-11 items-center justify-center rounded-2xl ring-1">
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
                     <h3 className="mt-6 text-xl font-semibold">{step.title}</h3>
@@ -262,7 +263,7 @@ export function Landing() {
           <div className="mx-auto grid max-w-6xl gap-12 px-5 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:py-24">
             <div>
               <p className={eyebrow}>{c.understandEyebrow}</p>
-              <h2 className="font-display mt-3 text-4xl leading-tight font-semibold tracking-tight">
+              <h2 className="mt-3 text-4xl leading-tight font-extrabold tracking-tight">
                 {c.understandTitle}
               </h2>
               <p className="text-ink-soft mt-5 text-lg leading-relaxed">{c.understandSub}</p>
@@ -274,7 +275,7 @@ export function Landing() {
                   className="border-line bg-surface shadow-soft grid items-center gap-3 rounded-3xl border p-4 sm:grid-cols-[1fr_auto_1fr] sm:p-5"
                 >
                   <p className="text-ink flex items-start gap-2.5 text-[0.95rem] leading-snug">
-                    <span className="bg-kesar-50 text-kesar-600 mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full">
+                    <span className="bg-brand-50 text-brand-600 mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full">
                       <Mic className="h-3.5 w-3.5" aria-hidden />
                     </span>
                     <span className="italic">“{ex.said}”</span>
@@ -300,7 +301,7 @@ export function Landing() {
         <section className="border-line bg-surface border-t">
           <div className="mx-auto max-w-6xl px-5 py-20 lg:py-24">
             <p className={eyebrow}>{c.featuresEyebrow}</p>
-            <h2 className="font-display mt-3 max-w-2xl text-4xl leading-tight font-semibold tracking-tight">
+            <h2 className="mt-3 max-w-2xl text-4xl leading-tight font-extrabold tracking-tight">
               {c.featuresTitle}
             </h2>
             <ul className="border-line bg-line mt-12 grid gap-px overflow-hidden rounded-3xl border sm:grid-cols-2 lg:grid-cols-3">
@@ -322,18 +323,14 @@ export function Landing() {
 
         {/* ── Final CTA ── */}
         <section className="px-5 pb-20">
-          <div className="bg-ink text-paper relative mx-auto max-w-6xl overflow-hidden rounded-[2.5rem] px-8 py-16 text-center sm:py-20">
-            <div
-              className="pointer-events-none absolute -bottom-32 left-1/2 h-80 w-[40rem] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgb(228_98_31/0.55),transparent)]"
-              aria-hidden
-            />
-            <h2 className="font-display relative text-4xl leading-tight font-semibold tracking-tight sm:text-5xl">
+          <div className="bg-brand-500 relative mx-auto max-w-6xl overflow-hidden rounded-3xl px-8 py-16 text-center text-white sm:py-20">
+            <h2 className="relative text-4xl leading-tight font-extrabold tracking-tight sm:text-5xl">
               {c.finalTitle}
             </h2>
-            <p className="text-paper/70 relative mt-3 text-lg">{c.finalSub}</p>
+            <p className="relative mt-3 text-lg text-white">{c.finalSub}</p>
             <Link
               href="/dashboard"
-              className={`relative mt-8 ${btn.base} ${btn.lg} ${btn.primary}`}
+              className={`relative mt-8 ${btn.base} ${btn.lg} text-brand-600 hover:bg-brand-50 bg-white`}
             >
               <Mic className="h-5 w-5" aria-hidden />
               {c.cta}

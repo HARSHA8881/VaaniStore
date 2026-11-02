@@ -66,10 +66,10 @@ describe("applyPatch", () => {
 
   it("applies ops in order", () => {
     const next = applyPatch(base, [
-      { op: "set_theme", value: "bright" },
-      { op: "set_theme", value: "minimal" },
+      { op: "set_theme", value: "dark" },
+      { op: "set_theme", value: "light" },
     ]);
-    expect(next.theme).toBe("minimal");
+    expect(next.theme).toBe("light");
   });
 });
 
@@ -94,9 +94,9 @@ describe("editResponseSchemaFor", () => {
 
   it("strips extra keys the flat LLM shape includes", () => {
     const r = schema.parse({
-      operations: [{ op: "set_theme", value: "bright", field: "name", day: "mon" }],
+      operations: [{ op: "set_theme", value: "dark", field: "name", day: "mon" }],
     });
-    expect(r.operations[0]).toEqual({ op: "set_theme", value: "bright" });
+    expect(r.operations[0]).toEqual({ op: "set_theme", value: "dark" });
   });
 });
 

@@ -22,7 +22,7 @@ ShopProfile {
   address?: { line: string; city: string; pincode?: string; mapsQuery?: string };
   hours: { day: "mon"|"tue"|"wed"|"thu"|"fri"|"sat"|"sun"; open?: "HH:MM"; close?: "HH:MM"; closed: boolean }[];
   products: { id: string; name: string; priceInr?: number; unit?: string; imageUrl?: string; inStock: boolean }[];
-  theme: "classic" | "bright" | "minimal";
+  theme: "light" | "dark";   // old "classic" | "bright" | "minimal" are read as "light"
   language: "en" | "hi" | "hinglish";
 }
 ```

@@ -6,6 +6,7 @@ import type { DraftProfile, Language } from "@/lib/schema";
 import { Field } from "./dashboard/Field";
 import { HoursEditor } from "./dashboard/HoursEditor";
 import { ProductsEditor } from "./dashboard/ProductsEditor";
+import { ScanPriceList } from "./dashboard/ScanPriceList";
 import { card } from "./ui/styles";
 import { useUi } from "./UiLang";
 
@@ -130,6 +131,7 @@ export function ProfileEditor({
         missing={missing.includes("products")}
         aside={draft.products.length ? String(draft.products.length) : undefined}
       >
+        <ScanPriceList products={draft.products} onChange={(p) => set("products", p)} />
         <ProductsEditor
           products={draft.products}
           onChange={(p) => set("products", p)}

@@ -36,6 +36,6 @@ export const sampleShop: ShopProfile = {
     { id: "p7", name: "Amul Butter", priceInr: 58, unit: "100 g", inStock: true },
     { id: "p8", name: "Basmati Rice", priceInr: 120, unit: "kg", inStock: true },
   ],
-  theme: "classic",
+  theme: "light",
   language: "hinglish",
 };

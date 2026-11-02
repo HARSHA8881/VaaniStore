@@ -19,7 +19,7 @@ function icon(size, { maskable = false } = {}) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        background: "linear-gradient(160deg, #f97316, #b91c1c)",
+        background: "#0C831F",
         borderRadius: maskable ? 0 : s(112),
       },
     },

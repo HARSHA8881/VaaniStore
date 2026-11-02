@@ -5,7 +5,7 @@ import { btn } from "@/components/ui/styles";
 export default function NotFound() {
   return (
     <main className="bg-grain flex min-h-screen flex-col items-center justify-center gap-4 p-6 text-center">
-      <span className="bg-surface text-kesar-500 shadow-soft ring-line flex h-16 w-16 items-center justify-center rounded-3xl ring-1">
+      <span className="bg-surface text-brand-500 shadow-soft ring-line flex h-16 w-16 items-center justify-center rounded-3xl ring-1">
         <Store className="h-8 w-8" aria-hidden />
       </span>
       <h1 className="font-display text-3xl font-semibold tracking-tight">Shop not found</h1>

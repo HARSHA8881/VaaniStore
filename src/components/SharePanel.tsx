@@ -90,7 +90,7 @@ export function SharePanel({ url, shopName }: { url: string; shopName: string })
             <a
               href={qr}
               download={`${shopName.replace(/[^\w]+/g, "-")}-qr.png`}
-              className="text-kesar-600 hover:bg-kesar-50 inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-sm font-semibold"
+              className="text-brand-600 hover:bg-brand-50 inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-sm font-semibold"
             >
               <Download className="h-4 w-4" aria-hidden />
               {t("downloadQr")}

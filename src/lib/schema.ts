@@ -56,7 +56,19 @@ export const ProductSchema = z.object({
   inStock: z.boolean(),
 });
 
-export const ThemeSchema = z.enum(["classic", "bright", "minimal"]);
+/**
+ * Two looks: light and dark. Shops saved before Nov 2026 used "classic", "bright"
+ * or "minimal"; those are read as "light" so old shops keep working.
+ */
+const LEGACY_THEMES: Record<string, "light"> = {
+  classic: "light",
+  bright: "light",
+  minimal: "light",
+};
+export const ThemeSchema = z.preprocess(
+  (v) => (typeof v === "string" && v in LEGACY_THEMES ? LEGACY_THEMES[v] : v),
+  z.enum(["light", "dark"]),
+);
 export const LanguageSchema = z.enum(["en", "hi", "hinglish"]);
 
 export const ShopProfileSchema = z.object({

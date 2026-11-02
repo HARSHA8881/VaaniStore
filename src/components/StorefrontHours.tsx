@@ -43,7 +43,7 @@ export function StorefrontHours({
               <th scope="row" className="rounded-l-xl py-2.5 pl-3 font-medium">
                 {t(lang, `day_${h.day}` as MessageKey)}
                 {isToday && (
-                  <span className="ml-2 rounded-full bg-current/10 px-2 py-0.5 text-[0.7rem] font-semibold tracking-wide uppercase opacity-80">
+                  <span className="ml-2 rounded-full bg-current/10 px-2 py-0.5 text-[0.7rem] font-semibold tracking-wide uppercase">
                     {t(lang, "today")}
                   </span>
                 )}

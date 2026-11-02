@@ -53,7 +53,7 @@ export function MissingPrompts({
               fill="none"
               strokeWidth="4"
               strokeLinecap="round"
-              className={missing.length ? "stroke-kesar-500" : "stroke-leaf"}
+              className={missing.length ? "stroke-brand-500" : "stroke-leaf"}
               strokeDasharray={`${(pct / 100) * 97.4} 97.4`}
               style={{ transition: "stroke-dasharray 0.6s ease" }}
             />
@@ -83,7 +83,7 @@ export function MissingPrompts({
                 key={field}
                 type="button"
                 onClick={() => onAsk({ text: QUESTIONS[field] ?? field, label })}
-                className="bg-kesar-50 text-kesar-700 ring-kesar-200 hover:bg-kesar-100 inline-flex min-h-10 items-center gap-2 rounded-full px-4 text-sm font-medium ring-1 transition"
+                className="bg-brand-50 text-brand-700 ring-brand-200 hover:bg-brand-100 inline-flex min-h-10 items-center gap-2 rounded-full px-4 text-sm font-medium ring-1 transition"
               >
                 <Mic className="h-3.5 w-3.5" aria-hidden />
                 {label}

@@ -17,13 +17,14 @@ const LANGS: { id: Language; label: string }[] = [
 
 /** Sample shop with a floating toolbar to try every theme and language. */
 export function PreviewSwitcher() {
-  const [theme, setTheme] = useState<Theme>("classic");
+  const [theme, setTheme] = useState<Theme>("light");
   const [language, setLanguage] = useState<Language>("hinglish");
 
   return (
     <div className="bg-paper flex min-h-screen flex-col">
-      <div className="border-line bg-paper/85 sticky top-0 z-20 border-b backdrop-blur-md">
-        <div className="mx-auto flex max-w-5xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-2.5">
+      {/* Not sticky: the shop page below has its own sticky header. */}
+      <div className="border-line bg-paper border-b">
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-2.5">
           <Link href="/" aria-label="VaaniStore home" className="mr-auto">
             <Logo />
           </Link>
@@ -60,10 +61,9 @@ export function PreviewSwitcher() {
           </div>
         </div>
       </div>
-      <div className="mx-auto w-full max-w-5xl flex-1 sm:px-4 sm:py-8">
-        <div className="sm:shadow-lift sm:ring-line overflow-clip sm:rounded-[2rem] sm:ring-1">
-          <StorefrontView profile={{ ...sampleShop, theme, language }} demo />
-        </div>
+      {/* Full page, edge to edge — exactly how a customer sees a shop. */}
+      <div className="flex-1">
+        <StorefrontView profile={{ ...sampleShop, theme, language }} demo />
       </div>
     </div>
   );

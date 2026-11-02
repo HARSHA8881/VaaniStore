@@ -29,7 +29,7 @@ export function HoursEditor({
   }
 
   const timeCls =
-    "min-h-10 w-[6.6rem] rounded-xl border border-line-strong bg-surface px-2 text-sm tabular-nums focus:border-kesar-500 focus:ring-4 focus:ring-kesar-100 focus:outline-none";
+    "min-h-10 w-[6.6rem] rounded-xl border border-line-strong bg-surface px-2 text-sm tabular-nums focus:border-brand-500 focus:ring-4 focus:ring-brand-100 focus:outline-none";
 
   return (
     <div className="space-y-1.5">
@@ -58,7 +58,7 @@ export function HoursEditor({
               />
               {/* Switch */}
               <span
-                className="bg-line-strong peer-checked:bg-leaf peer-focus-visible:ring-kesar-100 relative h-6 w-10 shrink-0 rounded-full transition peer-focus-visible:ring-4 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition peer-checked:after:translate-x-4"
+                className="bg-line-strong peer-checked:bg-leaf peer-focus-visible:ring-brand-100 relative h-6 w-10 shrink-0 rounded-full transition peer-focus-visible:ring-4 after:absolute after:top-0.5 after:left-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:shadow after:transition peer-checked:after:translate-x-4"
                 aria-hidden
               />
               <span className="w-24 font-medium">{dayName}</span>
@@ -90,7 +90,7 @@ export function HoursEditor({
         <button
           type="button"
           onClick={copyMondayToAll}
-          className="text-kesar-600 hover:bg-kesar-50 mt-1 inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-semibold"
+          className="text-brand-600 hover:bg-brand-50 mt-1 inline-flex min-h-10 items-center gap-1.5 rounded-full px-3 text-sm font-semibold"
         >
           <Copy className="h-4 w-4" aria-hidden />
           {t("sameEveryDay")}

@@ -1,40 +1,43 @@
 @import "tailwindcss";
 
 /*
- * VaaniStore design tokens.
- * Warm paper + ink, deep saffron ("kesar") as the one accent, leaf green reserved
- * for WhatsApp / success. Shop themes (src/components/themes) have their own palettes.
+ * VaaniStore design tokens — clean app style (think Swiggy / Zepto / Blinkit):
+ * light grey background, white rounded cards, one bold brand green, one sans typeface.
+ * Shop themes (src/components/themes) map these onto the customer-facing page.
  */
 @theme inline {
   --font-sans: var(--font-geist-sans), var(--font-devanagari), system-ui, sans-serif;
-  --font-display: var(--font-fraunces), var(--font-devanagari-serif), ui-serif, Georgia, serif;
+  /* One typeface everywhere (clean app style). "display" is just bold Geist. */
+  --font-display: var(--font-geist-sans), var(--font-devanagari), system-ui, sans-serif;
 
-  --color-paper: #fbf7f1;
-  --color-paper-2: #f4ece1;
+  /* App surfaces: light grey background, white cards. */
+  --color-paper: #f5f6f8;
+  --color-paper-2: #eef0f3;
   --color-surface: #ffffff;
-  --color-ink: #1c1511;
-  --color-ink-soft: #5f5248;
-  --color-ink-faint: #776a5f;
-  --color-line: #e9dfd2;
-  --color-line-strong: #d8c9b8;
+  --color-ink: #1c1c1c;
+  --color-ink-soft: #5b6170;
+  --color-ink-faint: #646b78;
+  --color-line: #e6e8ec;
+  --color-line-strong: #d5d9e0;
 
-  --color-kesar-50: #fff4ec;
-  --color-kesar-100: #fde3cf;
-  --color-kesar-200: #fbc49e;
-  --color-kesar-400: #f2843f;
-  --color-kesar-500: #e4621f;
-  --color-kesar-600: #c2470e;
-  --color-kesar-700: #a33d0f;
+  /* The one brand colour: fresh grocery green (white text on 500 = 4.9:1). */
+  --color-brand-50: #e8f5ea;
+  --color-brand-100: #cdebd2;
+  --color-brand-200: #a6dab0;
+  --color-brand-400: #2fa043;
+  --color-brand-500: #0c831f;
+  --color-brand-600: #0a6e1a;
+  --color-brand-700: #085a15;
 
   --color-marigold: #f4a62a;
-  --color-leaf: #17834a;
-  --color-leaf-600: #116a3b;
-  --color-leaf-50: #eaf6ef;
-  --color-danger: #b42318;
-  --color-danger-50: #fdeceb;
+  --color-leaf: #0c831f;
+  --color-leaf-600: #0a6e1a;
+  --color-leaf-50: #e8f5ea;
+  --color-danger: #c62828;
+  --color-danger-50: #fdecec;
 
-  --shadow-soft: 0 1px 2px rgb(28 21 17 / 0.04), 0 8px 24px -12px rgb(28 21 17 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(28 21 17 / 0.05), 0 24px 48px -20px rgb(28 21 17 / 0.28);
+  --shadow-soft: 0 1px 2px rgb(16 24 40 / 0.04), 0 4px 16px -6px rgb(16 24 40 / 0.08);
+  --shadow-lift: 0 2px 6px rgb(16 24 40 / 0.06), 0 20px 40px -18px rgb(16 24 40 / 0.22);
 
   --animate-ring: ring 2.4s cubic-bezier(0.2, 0.6, 0.3, 1) infinite;
   --animate-bar: bar 1s ease-in-out infinite;
@@ -99,23 +102,18 @@ body {
 }
 
 ::selection {
-  background: var(--color-kesar-100);
+  background: var(--color-brand-100);
   color: var(--color-ink);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-kesar-500);
+  outline: 2px solid var(--color-brand-500);
   outline-offset: 2px;
 }
 
-/* Fine paper grain behind marketing sections. */
+/* Plain warm paper behind marketing sections (solid colours only, no gradients). */
 .bg-grain {
-  background-image:
-    radial-gradient(circle at 1px 1px, rgb(28 21 17 / 0.05) 1px, transparent 0),
-    linear-gradient(var(--color-paper), var(--color-paper));
-  background-size:
-    18px 18px,
-    auto;
+  background-color: var(--color-paper);
 }
 
 @media (prefers-reduced-motion: reduce) {

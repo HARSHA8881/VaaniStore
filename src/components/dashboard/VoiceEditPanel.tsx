@@ -76,31 +76,23 @@ export function VoiceEditPanel({
 
   return (
     <section
-      className={`relative overflow-hidden rounded-3xl p-5 sm:p-6 ${question ? "bg-kesar-50 ring-kesar-200 ring-2" : "bg-ink text-paper"}`}
+      className={`relative overflow-hidden rounded-2xl p-5 sm:p-6 ${question ? "bg-brand-50 ring-brand-200 ring-2" : "border-line bg-surface shadow-soft border"}`}
     >
-      {!question && (
-        <div
-          className="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-[radial-gradient(closest-side,rgb(228_98_31/0.45),transparent)]"
-          aria-hidden
-        />
-      )}
       <div className="relative flex items-start gap-3">
         <span
-          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl ${question ? "bg-surface text-kesar-600" : "bg-paper/10 text-kesar-200"}`}
+          className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl ${question ? "bg-surface text-brand-600" : "bg-brand-50 text-brand-600"}`}
         >
           <AudioLines className="h-5 w-5" aria-hidden />
         </span>
         <div className="min-w-0 flex-1">
-          <h2 className="font-display text-xl font-semibold">
-            {question ? question.label : t("voiceEditTitle")}
-          </h2>
-          {!question && <p className="text-paper/65 mt-0.5 text-sm">{t("voiceEditHint")}</p>}
+          <h2 className="text-lg font-bold">{question ? question.label : t("voiceEditTitle")}</h2>
+          {!question && <p className="text-ink-soft mt-0.5 text-sm">{t("voiceEditHint")}</p>}
         </div>
         {!question && undoCount > 0 && onUndo && (
           <button
             type="button"
             onClick={onUndo}
-            className="bg-paper/10 text-paper hover:bg-paper/20 inline-flex min-h-9 items-center gap-1.5 rounded-full px-3 text-sm font-semibold"
+            className="bg-paper-2 text-ink hover:bg-line inline-flex min-h-9 items-center gap-1.5 rounded-lg px-3 text-sm font-semibold"
           >
             <Undo2 className="h-4 w-4" aria-hidden />
             {t("undo")} ({undoCount})
@@ -120,9 +112,7 @@ export function VoiceEditPanel({
 
       <div className="relative mt-5">
         {!pending ? (
-          <div
-            className={`space-y-4 rounded-2xl p-4 ${question ? "bg-surface" : "bg-surface text-ink"}`}
-          >
+          <div className={`space-y-4 rounded-xl p-4 ${question ? "bg-surface" : "bg-paper"}`}>
             <VoiceRecorder value={instruction} onChange={setInstruction} compact placeholder="" />
             <button
               type="button"
@@ -139,7 +129,7 @@ export function VoiceEditPanel({
             </button>
           </div>
         ) : (
-          <div className="bg-surface text-ink space-y-3 rounded-2xl p-4">
+          <div className="bg-paper text-ink space-y-3 rounded-xl p-4">
             {rows.length === 0 ? (
               <p className="text-ink-soft">{t("noChanges")}</p>
             ) : (

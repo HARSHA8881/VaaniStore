@@ -21,7 +21,7 @@ export default function Error({ error, retry }: { error: unknown; retry: () => v
       <button
         type="button"
         onClick={() => retry()}
-        className="bg-kesar-500 hover:bg-kesar-600 min-h-12 rounded-full px-6 font-semibold text-white"
+        className="bg-brand-500 hover:bg-brand-600 min-h-12 rounded-full px-6 font-semibold text-white"
       >
         Try again · फिर कोशिश करें
       </button>

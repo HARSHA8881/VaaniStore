@@ -13,7 +13,7 @@ export function emptyDraft(): DraftProfile {
     category: "",
     hours: [],
     products: [],
-    theme: "classic",
+    theme: "light",
     language: "hinglish",
   };
 }

@@ -6,7 +6,13 @@ import { z } from "zod";
  * Everything AI-related depends on this type, not on Gemini directly, so tests and
  * the eval can swap in a fake model and we could change providers in one place.
  */
-export type GenerateJson = (args: { system: string; user: string }) => Promise<string>;
+/** An image sent alongside the prompt (base64, no data: prefix). */
+export type InlineImage = { mimeType: string; data: string };
+export type GenerateJson = (args: {
+  system: string;
+  user: string;
+  images?: InlineImage[];
+}) => Promise<string>;
 
 export class AiNotConfiguredError extends Error {}
 
@@ -77,11 +83,21 @@ export function geminiGenerator(responseSchema: z.ZodType): GenerateJson {
 
   const call =
     (name: string, timeoutMs: number, withThinking: boolean) =>
-    async (args: { system: string; user: string }) => {
+    async (args: { system: string; user: string; images?: InlineImage[] }) => {
       try {
         const res = await ai.models.generateContent({
           model: name,
-          contents: args.user,
+          contents: args.images?.length
+            ? [
+                {
+                  role: "user",
+                  parts: [
+                    ...args.images.map((inlineData) => ({ inlineData })),
+                    { text: args.user },
+                  ],
+                },
+              ]
+            : args.user,
           config: {
             systemInstruction: args.system,
             responseMimeType: "application/json",
@@ -166,18 +182,20 @@ export async function generateValidated<T>({
   system,
   user,
   schema,
+  images,
 }: {
   generate: GenerateJson;
   system: string;
   user: string;
   schema: z.ZodType<T>;
+  images?: InlineImage[];
 }): Promise<{ data: T; attempts: number }> {
   let prompt = user;
   let lastOutput = "";
   let lastError = "";
 
   for (let attempt = 1; attempt <= 2; attempt++) {
-    lastOutput = await generate({ system, user: prompt });
+    lastOutput = await generate({ system, user: prompt, images });
     const parsed = safeJsonParse(lastOutput);
     const result = parsed.ok
       ? schema.safeParse(parsed.value)

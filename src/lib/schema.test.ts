@@ -7,7 +7,7 @@ const validShop = {
   category: "kirana",
   hours: [{ day: "mon", open: "09:00", close: "22:00", closed: false }],
   products: [{ id: "p1", name: "Parle-G", priceInr: 10, inStock: true }],
-  theme: "classic",
+  theme: "light",
   language: "hinglish",
 };
 
@@ -37,5 +37,21 @@ describe("TimeSchema", () => {
 
   it.each(["9:00", "24:00", "10 PM", "12:60"])("rejects %s", (t) => {
     expect(TimeSchema.safeParse(t).success).toBe(false);
+  });
+});
+
+describe("ThemeSchema", () => {
+  it("accepts light and dark", () => {
+    expect(ShopProfileSchema.parse({ ...validShop, theme: "dark" }).theme).toBe("dark");
+  });
+
+  it("reads old theme names as light so existing shops keep working", () => {
+    for (const old of ["classic", "bright", "minimal"]) {
+      expect(ShopProfileSchema.parse({ ...validShop, theme: old }).theme).toBe("light");
+    }
+  });
+
+  it("rejects unknown themes", () => {
+    expect(ShopProfileSchema.safeParse({ ...validShop, theme: "neon" }).success).toBe(false);
   });
 });

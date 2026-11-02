@@ -1,37 +1,48 @@
 /**
- * A theme is a set of Tailwind class strings for each visual slot.
- * StorefrontView never hard-codes colours; it asks the theme. Adding a theme
- * means adding one file, not touching the view.
+ * Shop-page theme: Tailwind class strings for each visual slot.
+ * Clean app layout (think Swiggy / Zepto): sticky header, shop info card,
+ * search, product grid with ADD buttons, cart bar. StorefrontView never
+ * hard-codes colours; it asks the theme.
  */
 export type ThemeClasses = {
-  /** Display name shown in the theme picker. */
+  /** Display name and solid swatch colour for the theme picker. */
   label: string;
+  swatch: string;
+
   page: string;
-  hero: string;
-  /** Decorative layer inside the hero (pattern / glow). */
-  heroArt: string;
+  muted: string;
+
+  header: string;
+  avatar: string;
+  brandName: string;
+  cartButton: string;
+  cartBadge: string;
+
+  card: string;
   title: string;
   tagline: string;
   chip: string;
-  avatar: string;
   badgeOpen: string;
   badgeClosed: string;
-  /** The floating card holding Call / WhatsApp / Directions. */
-  actionsCard: string;
-  action: string;
+  actionSoft: string;
   actionPrimary: string;
-  section: string;
+
+  search: string;
   sectionTitle: string;
-  muted: string;
+
   productCard: string;
+  productImage: string;
   productName: string;
   price: string;
-  imagePlaceholder: string;
-  orderButton: string;
-  stockBadge: string;
+  addButton: string;
+  addActive: string;
+  stockOverlay: string;
+
   todayRow: string;
   divider: string;
+
   stickyBar: string;
-  /** Swatch used by the theme picker (any CSS background). */
-  swatch: string;
+  cartBar: string;
+  action: string;
+  sheetPrimary: string;
 };

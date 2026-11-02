@@ -33,6 +33,14 @@ export default function PrivacyPage() {
           <li>
             A draft of your shop on your own phone (browser storage), so you don&apos;t lose work.
           </li>
+          <li>
+            Anonymous counts for shop owners: page visits and taps on Call, WhatsApp, Directions and
+            Order, plus which products were in an order. No customer names, phone numbers, IP
+            addresses, locations or cookies are stored.
+          </li>
+          <li>
+            A customer&apos;s cart is kept only in their own browser until they send it on WhatsApp.
+          </li>
         </ul>
       </section>
 
@@ -59,7 +67,7 @@ export default function PrivacyPage() {
         <p>
           In the dashboard, tap <strong>Delete my shop permanently</strong>. Your shop page and
           photos are removed immediately. To also delete your login, email{" "}
-          <a className="text-kesar-600 underline" href={`mailto:${CONTACT_EMAIL}`}>
+          <a className="text-brand-600 underline" href={`mailto:${CONTACT_EMAIL}`}>
             {CONTACT_EMAIL}
           </a>
           .

@@ -222,7 +222,7 @@ export function VoiceRecorder({
 
   const statusLine = (
     <p
-      className={`flex items-center gap-2 font-semibold ${active ? "text-kesar-600" : "text-ink"}`}
+      className={`flex items-center gap-2 font-semibold ${active ? "text-brand-600" : "text-ink"}`}
       aria-live="polite"
     >
       {active && <Bars />}
@@ -242,7 +242,7 @@ export function VoiceRecorder({
       } ${
         active
           ? "bg-ink shadow-lift"
-          : "from-kesar-400 to-kesar-600 bg-gradient-to-b shadow-[0_14px_30px_-10px_rgb(228_98_31/0.75)] hover:scale-[1.03]"
+          : "bg-brand-500 hover:bg-brand-600 shadow-[0_12px_28px_-12px_rgb(12_131_31/0.6)] hover:scale-[1.03]"
       }`}
     >
       {active ? (
@@ -270,7 +270,7 @@ export function VoiceRecorder({
       ) : (
         <div className="flex flex-col items-center gap-4 py-2">
           <div className="relative flex h-40 w-40 items-center justify-center">
-            <span className="bg-kesar-50 absolute inset-3 rounded-full" aria-hidden />
+            <span className="bg-brand-50 absolute inset-3 rounded-full" aria-hidden />
             {active && <Rings />}
             {micButton}
           </div>
@@ -310,9 +310,9 @@ export function VoiceRecorder({
 function Rings() {
   return (
     <>
-      <span className="animate-ring bg-kesar-400/40 absolute inset-0 rounded-full" aria-hidden />
+      <span className="animate-ring bg-brand-400/40 absolute inset-0 rounded-full" aria-hidden />
       <span
-        className="animate-ring bg-kesar-400/30 absolute inset-0 rounded-full [animation-delay:0.8s]"
+        className="animate-ring bg-brand-400/30 absolute inset-0 rounded-full [animation-delay:0.8s]"
         aria-hidden
       />
     </>

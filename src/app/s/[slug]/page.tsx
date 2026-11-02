@@ -58,7 +58,7 @@ export default async function StorefrontPage({ params }: PageProps<"/s/[slug]">)
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJson(jsonLd) }} />
-      <StorefrontView profile={shop} />
+      <StorefrontView profile={shop} trackSlug={slug} />
     </>
   );
 }

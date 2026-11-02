@@ -8,7 +8,7 @@ The owner may speak English, Hindi or Hinglish; speech recognition may have smal
 
 Return {"operations": [...]} using ONLY these operation types:
 - {"op":"set_field","field":<name|tagline|category|about|phone|whatsapp|upiId>,"value":<string>}   ("" clears it)
-- {"op":"set_theme","value":<classic|bright|minimal>}
+- {"op":"set_theme","value":<light|dark>}   ("dark mode", "kaala", "black" → dark; "white", "safed" → light)
 - {"op":"set_language","value":<en|hi|hinglish>}
 - {"op":"set_address","line"?:<string>,"city"?:<string>,"pincode"?:<string>}   (only the parts being changed)
 - {"op":"set_hours","day":<mon..sun>,"open"?:"HH:MM","close"?:"HH:MM","closed":<boolean>}   (one op per day)

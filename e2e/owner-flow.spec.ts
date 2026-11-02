@@ -65,8 +65,19 @@ test("owner builds a shop by voice and edits it", async ({ page }) => {
   const preview = page.getByRole("complementary", { name: "Preview" });
   await previewTab.click();
   await expect(preview.getByRole("heading", { name: "Sharma General Store" })).toBeVisible();
-  const maggiOrder = preview.getByRole("link", { name: "Order on WhatsApp" }).first();
-  await expect(maggiOrder).toHaveAttribute("href", /wa\.me\/919876543210\?text=.*Maggi/);
+
+  // Cart: 2 × Maggi + 1 × Parle-G → one WhatsApp message with lines and a total.
+  await preview.getByRole("button", { name: "Add Maggi" }).click();
+  await preview.getByRole("button", { name: "Increase: Maggi" }).click();
+  await preview.getByRole("button", { name: "Add Parle-G" }).click();
+  await preview.getByRole("button", { name: /View order/ }).click();
+  const send = page.getByRole("link", { name: "Send order on WhatsApp" });
+  await expect(send).toHaveAttribute("href", /^https:\/\/wa\.me\/919876543210\?text=/);
+  const message = decodeURIComponent((await send.getAttribute("href"))!.split("text=")[1]);
+  expect(message).toContain("• 2 × Maggi (₹14 / packet) = ₹28");
+  expect(message).toContain("• 1 × Parle-G (₹10 / packet) = ₹10");
+  expect(message).toContain("Total: ₹38");
+  await page.getByRole("button", { name: "Close" }).click();
 
   // 3. Voice edit → diff → confirm.
   await editTab.click();
@@ -95,25 +106,29 @@ test("owner builds a shop by voice and edits it", async ({ page }) => {
 test("sample storefront switches themes and never contacts a real number", async ({ page }) => {
   await page.goto("/preview");
   await expect(page.getByRole("heading", { name: "Sharma General Store" })).toBeVisible();
-  await page.getByRole("button", { name: "minimal" }).click();
-  await expect(page.getByRole("button", { name: "minimal" })).toHaveAttribute(
-    "aria-pressed",
-    "true",
-  );
+  await page.getByRole("button", { name: "Dark" }).click();
+  await expect(page.getByRole("button", { name: "Dark" })).toHaveAttribute("aria-pressed", "true");
   // Out-of-stock products get no order button.
   await expect(page.getByText("Out of stock")).toBeVisible();
-  const orderButtons = page.getByRole("link", { name: "Order on WhatsApp" });
-  await expect(orderButtons).toHaveCount(7);
+  await expect(page.getByRole("button", { name: /^Add / })).toHaveCount(7);
+
+  // The cart works in the demo, but sending the order is disabled.
+  await page.getByRole("button", { name: "Add Parle-G" }).click();
+  await page.getByRole("button", { name: /View order/ }).click();
+  const send = page.getByRole("link", { name: "Send order on WhatsApp" });
+  await expect(send).toHaveAttribute("aria-disabled", "true");
+  await expect(send).not.toHaveAttribute("href", /.+/);
+  await page.getByRole("button", { name: "Close" }).click();
 
   // The sample number is made up and could be someone's real phone, so in demo mode
   // no button may point anywhere.
   await expect(page.getByRole("note")).toContainText("Demo shop");
-  for (const name of ["Order on WhatsApp", "WhatsApp", "Call", "Open in Google Maps"]) {
+  for (const name of ["WhatsApp", "Call", "Directions", "Open in Google Maps"]) {
     for (const link of await page.getByRole("link", { name, exact: true }).all()) {
       await expect(link).not.toHaveAttribute("href", /.+/);
       await expect(link).toHaveAttribute("aria-disabled", "true");
     }
   }
-  await expect(page.locator('a[href*="wa.me"], a[href^="tel:"]')).toHaveCount(0);
+  await expect(page.locator('a[href*="wa.me"], a[href^="tel:"], a[href^="upi:"]')).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Copy" })).toHaveCount(0);
 });
