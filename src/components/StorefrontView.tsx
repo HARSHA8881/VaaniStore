@@ -41,7 +41,8 @@ export function StorefrontView({
   /** Public page only: record anonymous visits/taps for the owner's Insights. */
   trackSlug?: string;
 }) {
-  const th = themes[profile.theme];
+  // Fallback: a profile saved before a theme was removed still renders.
+  const th = themes[profile.theme] ?? themes.light;
   const lang = storefrontLang(profile.language);
   // Orders go to WhatsApp number, else the phone (most Indian shop phones have WhatsApp).
   const orderNumber = profile.whatsapp || profile.phone;

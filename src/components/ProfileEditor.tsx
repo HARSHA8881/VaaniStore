@@ -20,12 +20,15 @@ export function ProfileEditor({
   missing,
   supabase,
   userId,
+  hideProducts = false,
 }: {
   draft: DraftProfile;
   onChange: (d: DraftProfile) => void;
   missing: string[];
   supabase: SupabaseClient | null;
   userId: string | null;
+  /** Manage mode shows products in their own tab. */
+  hideProducts?: boolean;
 }) {
   const { t } = useUi();
   const set = <K extends keyof DraftProfile>(key: K, value: DraftProfile[K]) =>
@@ -123,22 +126,23 @@ export function ProfileEditor({
       >
         <HoursEditor hours={draft.hours} onChange={(h) => set("hours", h)} />
       </Group>
-
-      <Group
-        icon={<Package />}
-        title={t("f_products")}
-        id="sec-products"
-        missing={missing.includes("products")}
-        aside={draft.products.length ? String(draft.products.length) : undefined}
-      >
-        <ScanPriceList products={draft.products} onChange={(p) => set("products", p)} />
-        <ProductsEditor
-          products={draft.products}
-          onChange={(p) => set("products", p)}
-          supabase={supabase}
-          userId={userId}
-        />
-      </Group>
+      {!hideProducts && (
+        <Group
+          icon={<Package />}
+          title={t("f_products")}
+          id="sec-products"
+          missing={missing.includes("products")}
+          aside={draft.products.length ? String(draft.products.length) : undefined}
+        >
+          <ScanPriceList products={draft.products} onChange={(p) => set("products", p)} />
+          <ProductsEditor
+            products={draft.products}
+            onChange={(p) => set("products", p)}
+            supabase={supabase}
+            userId={userId}
+          />
+        </Group>
+      )}
 
       <Group icon={<Languages />} title={t("f_language")} id="sec-language">
         <div className="bg-paper-2 inline-flex rounded-full p-1">

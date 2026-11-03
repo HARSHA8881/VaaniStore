@@ -4,18 +4,12 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import { ImagePlus, LoaderCircle, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 import { newProductId } from "@/lib/extract";
-import { compressImage } from "@/lib/image";
+import { uploadProductPhoto } from "@/lib/photos";
 import type { Product } from "@/lib/schema";
-import { IMAGES_BUCKET } from "@/lib/supabase/config";
 import { useUi } from "../UiLang";
 
 const small =
   "min-h-10 rounded-xl border border-line-strong bg-surface px-3 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-100 focus:outline-none";
-
-/** Unique storage path per upload, so a new photo never shows a cached old one. */
-function photoPath(userId: string, productId: string) {
-  return `${userId}/${productId}-${Date.now()}.jpg`;
-}
 
 export function ProductsEditor({
   products,
@@ -41,14 +35,7 @@ export function ProductsEditor({
     setError(null);
     setUploading(id);
     try {
-      const blob = await compressImage(file);
-      const path = photoPath(userId, id);
-      const { error: upErr } = await supabase.storage
-        .from(IMAGES_BUCKET)
-        .upload(path, blob, { contentType: "image/jpeg", upsert: true });
-      if (upErr) throw upErr;
-      const { data } = supabase.storage.from(IMAGES_BUCKET).getPublicUrl(path);
-      update(id, { imageUrl: data.publicUrl });
+      update(id, { imageUrl: await uploadProductPhoto(supabase, userId, id, file) });
     } catch (e) {
       console.error(e);
       setError(t("errGeneric"));

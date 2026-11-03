@@ -13,7 +13,8 @@ import {
   Trash2,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { createAutoSaver, type AutoSaver, type SaveStatus } from "@/lib/autosave";
 import {
   emptyDraft,
   loadLocalDraft,
@@ -23,7 +24,12 @@ import {
   toPreviewProfile,
 } from "@/lib/draft";
 import type { MessageKey } from "@/lib/i18n";
-import type { DraftProfile, ExtractResult } from "@/lib/schema";
+import {
+  DraftProfileSchema,
+  ShopProfileSchema,
+  type DraftProfile,
+  type ExtractResult,
+} from "@/lib/schema";
 import { shopPath } from "@/lib/site";
 import { ProfileEditor } from "../ProfileEditor";
 import { SharePanel } from "../SharePanel";
@@ -34,6 +40,7 @@ import { btn, card } from "../ui/styles";
 import { UiLangToggle, useUi } from "../UiLang";
 import { VoiceRecorder } from "../VoiceRecorder";
 import { InsightsCard } from "./InsightsCard";
+import { ManageView } from "./ManageView";
 import { MissingPrompts } from "./MissingPrompts";
 import { PublishBar } from "./PublishBar";
 import { ThemePicker } from "./ThemePicker";
@@ -66,6 +73,60 @@ export function Dashboard() {
   // Keep a local copy of the draft so nothing is lost on refresh / bad network.
   useEffect(() => saveLocalDraft(draft), [draft]);
 
+  // ── Auto-save (manage mode) ──────────────────────────────────────────────
+  // Once a shop exists on the server, every change is saved automatically a moment
+  // after the owner stops typing. No Save/Publish button to forget.
+  const [autoStatus, setAutoStatus] = useState<SaveStatus>({ state: "idle" });
+  const lastSavedJson = useRef<string | null>(null);
+  const savedRef = useRef<Saved | null>(null);
+  const saverRef = useRef<AutoSaver<DraftProfile> | null>(null);
+  useEffect(() => {
+    savedRef.current = saved;
+  }, [saved]);
+  useEffect(() => {
+    const saver = createAutoSaver<DraftProfile>({
+      onStatus: setAutoStatus,
+      save: async (profile) => {
+        const current = savedRef.current;
+        if (!current) return;
+        const res = await fetch("/api/shop", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ profile, publish: current.published }),
+          keepalive: true, // finish even if the owner closes the tab right after
+        });
+        const data = (await res.json().catch(() => ({}))) as { slug?: string; error?: string };
+        if (!res.ok || !data.slug) throw new Error(data.error ?? "Save failed");
+        lastSavedJson.current = JSON.stringify(profile);
+        if (data.slug !== current.slug) setSaved({ ...current, slug: data.slug });
+      },
+    });
+    saverRef.current = saver;
+    const flush = () => void saver.flush();
+    window.addEventListener("pagehide", flush);
+    return () => {
+      window.removeEventListener("pagehide", flush);
+      saver.dispose();
+    };
+  }, []);
+
+  const manage = Boolean(user && saved && draft);
+  // Fields that must be filled before this version can be saved (a live shop needs
+  // a name and type). Shown instead of saving, so the live page never breaks.
+  const needs = useMemo(() => {
+    if (!manage || !draft || !saved) return [];
+    const result = saved.published
+      ? ShopProfileSchema.safeParse({ ...draft, slug: draft.slug || saved.slug })
+      : DraftProfileSchema.safeParse(draft);
+    return result.success ? [] : [...new Set(result.error.issues.map((i) => String(i.path[0])))];
+  }, [manage, draft, saved]);
+
+  useEffect(() => {
+    if (!manage || !draft || needs.length) return;
+    if (JSON.stringify(draft) === lastSavedJson.current) return;
+    saverRef.current?.schedule(draft);
+  }, [manage, draft, needs]);
+
   // Once logged in, load the saved shop (and use it if there's no local work in progress).
   useEffect(() => {
     if (!user) return;
@@ -75,7 +136,14 @@ export function Dashboard() {
       .then((data: { shop: (Saved & { profile: DraftProfile }) | null } | null) => {
         if (!active || !data?.shop) return;
         setSaved({ slug: data.shop.slug, published: data.shop.published });
-        setDraft((current) => current ?? data.shop!.profile);
+        // Run the saved copy through the schema so shops saved by older versions
+        // (e.g. theme "classic") are upgraded instead of crashing the preview.
+        const parsed = DraftProfileSchema.safeParse(data.shop.profile);
+        const profile = parsed.success ? parsed.data : data.shop.profile;
+        // Once a shop is saved, the server copy is the truth (it may have been edited
+        // on another phone). Remember the raw copy, so the upgrade gets saved once.
+        lastSavedJson.current = JSON.stringify(data.shop.profile);
+        setDraft(profile);
       })
       .catch(() => {});
     return () => {
@@ -146,7 +214,10 @@ export function Dashboard() {
         return;
       }
       setSaved({ slug: data.slug, published: !!data.published });
-      if (data.profile) setDraft(data.profile);
+      if (data.profile) {
+        lastSavedJson.current = JSON.stringify(data.profile);
+        setDraft(data.profile);
+      }
       setStatus(publish ? null : t("saved"));
     } catch {
       setStatus(t("errNetwork"));
@@ -280,6 +351,29 @@ export function Dashboard() {
             </button>
           </div>
         </main>
+      ) : manage && user && saved ? (
+        <ManageView
+          draft={draft}
+          setDraft={setDraft}
+          published={saved.published}
+          shopUrl={shopUrl}
+          autoStatus={autoStatus}
+          needs={needs}
+          onRetry={() => draft && saverRef.current?.schedule(draft)}
+          notice={status}
+          onPublish={() => save(true)}
+          onUnpublish={() => save(false)}
+          onDelete={deleteShop}
+          busy={busy}
+          user={user}
+          supabase={supabase}
+          missing={missing}
+          question={question}
+          setQuestion={setQuestion}
+          onConfirmVoiceEdit={confirmVoiceEdit}
+          undoCount={history.length}
+          onUndo={undo}
+        />
       ) : (
         <main className="mx-auto w-full max-w-6xl flex-1 px-4 pt-5 pb-6 lg:pt-8">
           {/* Phone-only tabs: editing and previewing don't fit side by side on a small screen. */}
